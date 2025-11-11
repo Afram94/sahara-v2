@@ -76,7 +76,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="text-gray-400 text-sm md:text-base tracking-widest uppercase mb-8"
             >
-              Experience Grilled Perfection
+              Upplev Grillad Perfektion
             </motion.p>
 
             {/* Bottom Decorative Line */}
@@ -155,9 +155,9 @@ export default function Hero() {
           className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-wider"
           style={{ fontFamily: 'var(--font-playfair)' }}
         >
-          <span className="text-white">Experience</span>
+          <span className="text-white">Upplev</span>
           <br />
-          <span className="text-[#d4af37]">Grilled Perfection</span>
+          <span className="text-[#d4af37]">Grillad Perfektion</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -167,9 +167,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.9 }}
           className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-12 max-w-2xl font-light leading-relaxed"
         >
-          Where premium cuts meet artisanal grilling techniques.
+          Där premium kött möter hantverksmässiga grillttekniker.
           <br className="hidden md:block" />
-          A culinary journey unlike any other.
+          En kulinarisk resa utöver det vanliga.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -185,7 +185,7 @@ export default function Hero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            View Menu
+            Se Meny
           </motion.a>
           <motion.a
             href="#contact"
@@ -193,7 +193,7 @@ export default function Hero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Book A Table
+            Boka Bord
           </motion.a>
         </motion.div>
 
@@ -218,7 +218,7 @@ export default function Hero() {
             transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
             className="flex flex-col items-center text-[#d4af37]"
           >
-            <span className="text-sm mb-2 font-light">Scroll to explore</span>
+            <span className="text-sm mb-2 font-light">Scrolla för att utforska</span>
             <ChevronDown size={24} />
           </motion.div>
         </motion.a>

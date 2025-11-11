@@ -47,10 +47,10 @@ export default function MenuPage() {
             className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4"
             style={{ fontFamily: 'var(--font-playfair)' }}
           >
-            Our <span className="text-[#d4af37]">Full Menu</span>
+            Vår <span className="text-[#d4af37]">Fullständiga Meny</span>
           </h1>
           <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto">
-            Explore our complete selection of grilled perfection, handcrafted cocktails, and fresh beverages
+            Utforska vårt kompletta urval av grillad perfektion, handgjorda cocktails och färska drycker
           </p>
         </motion.div>
 
@@ -160,7 +160,7 @@ export default function MenuPage() {
                   href={`/menu/${activeCategory}/${item.slug}`}
                   className="inline-flex items-center gap-2 text-[#d4af37] hover:text-[#b8941f] transition-colors duration-300 text-sm font-semibold"
                 >
-                  View Details
+                  Visa Detaljer
                   <ChevronRight size={16} />
                 </Link>
 
@@ -178,7 +178,7 @@ export default function MenuPage() {
           transition={{ duration: 0.4, delay: 0.3 }}
           className="text-center mt-12 text-gray-500 text-sm"
         >
-          Showing {activeMenu?.items.length} items in {activeMenu?.name}
+          Visar {activeMenu?.items.length} rätter i {activeMenu?.name}
         </motion.div>
 
         {/* Back to Home CTA */}
@@ -192,7 +192,7 @@ export default function MenuPage() {
             href="/"
             className="inline-block px-8 py-4 bg-transparent border-2 border-[#d4af37] text-[#d4af37] font-semibold rounded-full hover:bg-[#d4af37] hover:text-black transition-all duration-300"
           >
-            Back to Home
+            Tillbaka till Startsidan
           </Link>
         </motion.div>
       </div>

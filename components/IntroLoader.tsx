@@ -92,7 +92,7 @@ export default function IntroLoader() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="text-gray-400 text-sm md:text-base tracking-widest uppercase"
             >
-              Experience Grilled Perfection
+              Upplev Grillad Perfektion
             </motion.p>
 
             {/* Decorative Line Below */}

@@ -17,87 +17,87 @@ export default function AboutPage() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const stats = [
-    { number: '15+', label: 'Years Excellence', icon: TrendingUp },
-    { number: '50K+', label: 'Happy Guests', icon: Users },
-    { number: '200+', label: 'Signature Dishes', icon: Star },
-    { number: '25+', label: 'Master Chefs', icon: Award },
+    { number: '15+', label: 'År Excellens', icon: TrendingUp },
+    { number: '50K+', label: 'Nöjda Gäster', icon: Users },
+    { number: '200+', label: 'Signaturrätter', icon: Star },
+    { number: '25+', label: 'Mästerkockar', icon: Award },
   ];
 
   const values = [
     {
       icon: Heart,
       title: 'Passion',
-      description: 'Every dish is crafted with love and dedication to culinary excellence.',
+      description: 'Varje rätt skapas med kärlek och dedikation till kulinarisk excellens.',
     },
     {
       icon: Award,
-      title: 'Quality',
-      description: 'We source only the finest ingredients from trusted local suppliers.',
+      title: 'Kvalitet',
+      description: 'Vi använder endast de finaste ingredienserna från pålitliga lokala leverantörer.',
     },
     {
       icon: Users,
-      title: 'Community',
-      description: 'Building lasting relationships with our guests and local community.',
+      title: 'Gemenskap',
+      description: 'Bygger varaktiga relationer med våra gäster och lokala samhället.',
     },
     {
       icon: Clock,
       title: 'Tradition',
-      description: 'Honoring time-tested recipes while innovating for modern palates.',
+      description: 'Hedrar tidstestade recept samtidigt som vi innoverar för moderna smaklökar.',
     },
   ];
 
   const timeline = [
     {
       year: '2009',
-      title: 'The Beginning',
-      description: 'Founded by Chef Michael Hassan with a vision to bring authentic grilling to the heart of the city.',
+      title: 'Början',
+      description: 'Grundades av Kock Michael Hassan med en vision att bringa autentisk grillning till hjärtat av staden.',
     },
     {
       year: '2013',
-      title: 'First Award',
-      description: "Received Michelin recognition and named 'Best Grill Restaurant' by Culinary Magazine.",
+      title: 'Första Priset',
+      description: 'Fick Michelin-erkännande och utnämnd till "Bästa Grillrestaurang" av Culinary Magazine.',
     },
     {
       year: '2017',
       title: 'Expansion',
-      description: 'Opened our signature smokehouse and introduced the famous 72-hour slow-cooked brisket.',
+      description: 'Öppnade vårt signatur-rökhus och introducerade den berömda 72-timmars långkokt brisket.',
     },
     {
       year: '2020',
       title: 'Innovation',
-      description: 'Launched farm-to-table program with local sustainable farms for fresh, organic ingredients.',
+      description: 'Lanserade gård-till-bord-program med lokala hållbara gårdar för färska, ekologiska ingredienser.',
     },
     {
       year: '2025',
-      title: 'Excellence',
-      description: 'Celebrating over a decade of culinary innovation and customer satisfaction.',
+      title: 'Excellens',
+      description: 'Firar över ett decennium av kulinarisk innovation och kundnöjdhet.',
     },
   ];
 
   const team = [
     {
-      name: 'Chef Michael Hassan',
-      role: 'Executive Chef & Founder',
+      name: 'Kock Michael Hassan',
+      role: 'Kökschef & Grundare',
       image: 'https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=800&auto=format&fit=crop',
-      bio: '20+ years experience in fine dining and grill mastery',
+      bio: '20+ års erfarenhet inom finmatlaging och grillmästerskap',
     },
     {
       name: 'Sarah Chen',
-      role: 'Head Pastry Chef',
+      role: 'Huvud Konditor',
       image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop',
-      bio: 'Award-winning dessert innovator and culinary artist',
+      bio: 'Prisbelönt dessertinnovatör och kulinarisk konstnär',
     },
     {
       name: 'David Rodriguez',
-      role: 'Master Grillman',
+      role: 'Mäster Grillare',
       image: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&auto=format&fit=crop',
-      bio: 'Specialist in live-fire cooking and smoke techniques',
+      bio: 'Specialist på öppen eld-matlagning och röktekniker',
     },
     {
       name: 'Emma Thompson',
       role: 'Sommelier',
       image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&auto=format&fit=crop',
-      bio: 'Expert wine curator with international certification',
+      bio: 'Expert vinkurator med internationell certifiering',
     },
   ];
 
@@ -129,14 +129,14 @@ export default function AboutPage() {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <span className="text-gold text-sm tracking-[0.3em] uppercase mb-4 block font-light">
-              Our Story
+              Vår Berättelse
             </span>
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-6 tracking-tight">
-              Where Fire Meets
+              Där Eld Möter
               <span className="block text-gold mt-2">Passion</span>
             </h1>
             <p className="text-zinc-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              Crafting extraordinary experiences through the art of flame and flavor since 2009
+              Skapar extraordinära upplevelser genom konsten av flamma och smak sedan 2009
             </p>
           </motion.div>
         </motion.div>
@@ -153,7 +153,7 @@ export default function AboutPage() {
             transition={{ duration: 2, repeat: Infinity }}
             className="flex flex-col items-center gap-2"
           >
-            <span className="text-gold text-xs tracking-widest uppercase">Scroll</span>
+            <span className="text-gold text-xs tracking-widest uppercase">Scrolla</span>
             <div className="w-px h-12 bg-gradient-to-b from-gold to-transparent" />
           </motion.div>
         </motion.div>
@@ -196,27 +196,27 @@ export default function AboutPage() {
               transition={{ duration: 0.5 }}
             >
               <span className="text-gold text-sm tracking-[0.3em] uppercase mb-4 block">
-                Since 2009
+                Sedan 2009
               </span>
               <h2 className="font-serif text-4xl md:text-6xl text-white mb-6">
-                A Legacy of
-                <span className="block text-gold mt-2">Culinary Excellence</span>
+                Ett Arv av
+                <span className="block text-gold mt-2">Kulinarisk Excellens</span>
               </h2>
               <div className="space-y-4 text-zinc-300 leading-relaxed">
                 <p>
-                  What began as a dream in a small kitchen has evolved into a culinary destination 
-                  that celebrates the primal art of cooking with fire. Our founder, Chef Michael Hassan, 
-                  brought together decades of global culinary experience to create something truly special.
+                  Vad som började som en dröm i ett litet kök har utvecklats till en kulinarisk destination 
+                  som firar den ursprungliga konsten att laga mat med eld. Vår grundare, Kock Michael Hassan, 
+                  samlade decennier av global kulinarisk erfarenhet för att skapa något verkligt speciellt.
                 </p>
                 <p>
-                  Every dish tells a story—of carefully selected ingredients, masterful technique, 
-                  and unwavering dedication to quality. We believe that dining is more than sustenance; 
-                  it's an experience that engages all the senses and creates lasting memories.
+                  Varje rätt berättar en historia—om noggrant utvalda ingredienser, mästerlig teknik, 
+                  och orubblig dedikation till kvalitet. Vi tror att matlagning är mer än näring; 
+                  det är en upplevelse som engagerar alla sinnen och skapar bestående minnen.
                 </p>
                 <p>
-                  From our signature wood-fired grills to our meticulously crafted cocktails, 
-                  every element reflects our commitment to excellence and innovation. 
-                  We honor tradition while fearlessly exploring new flavors and techniques.
+                  Från våra signatur-vedeldade grillar till våra omsorgsfullt skapade cocktails, 
+                  varje element reflekterar vårt engagemang för excellens och innovation. 
+                  Vi hedrar tradition samtidigt som vi oförskräckt utforskar nya smaker och tekniker.
                 </p>
               </div>
             </motion.div>
@@ -269,10 +269,10 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <span className="text-gold text-sm tracking-[0.3em] uppercase mb-4 block">
-              Our Philosophy
+              Vår Filosofi
             </span>
             <h2 className="font-serif text-4xl md:text-6xl text-white">
-              What Drives Us
+              Vad Driver Oss
             </h2>
           </motion.div>
 
@@ -311,10 +311,10 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <span className="text-gold text-sm tracking-[0.3em] uppercase mb-4 block">
-              Our Journey
+              Vår Resa
             </span>
             <h2 className="font-serif text-4xl md:text-6xl text-white">
-              Milestones & Moments
+              Milstolpar & Ögonblick
             </h2>
           </motion.div>
 
@@ -356,10 +356,10 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <span className="text-gold text-sm tracking-[0.3em] uppercase mb-4 block">
-              Meet The Masters
+              Möt Mästarna
             </span>
             <h2 className="font-serif text-4xl md:text-6xl text-white">
-              Behind The Flames
+              Bakom Lågorna
             </h2>
           </motion.div>
 
@@ -416,11 +416,11 @@ export default function AboutPage() {
             className="text-center max-w-3xl mx-auto"
           >
             <h2 className="font-serif text-4xl md:text-6xl text-white mb-6">
-              Experience The Difference
+              Upplev Skillnaden
             </h2>
             <p className="text-zinc-300 text-lg mb-8 leading-relaxed">
-              Join us for an unforgettable culinary journey where every detail 
-              is crafted to perfection. Reserve your table today.
+              Följ med oss på en oförglömlig kulinarisk resa där varje detalj 
+              är skapad till perfektion. Reservera ditt bord idag.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
@@ -429,7 +429,7 @@ export default function AboutPage() {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gold text-black px-8 py-4 font-semibold tracking-wide hover:bg-gold/90 transition-colors duration-300"
               >
-                RESERVE A TABLE
+                RESERVERA ETT BORD
               </motion.a>
               <motion.a
                 href="/menu"
@@ -437,7 +437,7 @@ export default function AboutPage() {
                 whileTap={{ scale: 0.95 }}
                 className="border-2 border-gold text-gold px-8 py-4 font-semibold tracking-wide hover:bg-gold hover:text-black transition-colors duration-300"
               >
-                VIEW OUR MENU
+                SE VÅR MENY
               </motion.a>
             </div>
           </motion.div>

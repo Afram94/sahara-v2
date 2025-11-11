@@ -7,42 +7,42 @@ import { X } from 'lucide-react';
 const galleryImages = [
   {
     url: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069',
-    title: 'Premium Grilled Steaks',
+    title: 'Premium Grillade Stekar',
     span: 'row-span-2',
   },
   {
     url: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=2031',
-    title: 'Tomahawk Perfection',
+    title: 'Tomahawk Perfektion',
     span: 'row-span-1',
   },
   {
     url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070',
-    title: 'Elegant Ambiance',
+    title: 'Elegant Atmosfär',
     span: 'row-span-1',
   },
   {
     url: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=2787',
-    title: 'Mixed Grill Feast',
+    title: 'Blandad Grill Fest',
     span: 'row-span-1',
   },
   {
     url: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=2070',
-    title: 'Lamb Delicacy',
+    title: 'Lammdelikatess',
     span: 'row-span-2',
   },
   {
     url: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=2070',
-    title: 'Sizzling Excellence',
+    title: 'Fräsande Excellens',
     span: 'row-span-1',
   },
   {
     url: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=2787',
-    title: 'Salmon Grilled',
+    title: 'Grillad Lax',
     span: 'row-span-1',
   },
   {
     url: 'https://images.unsplash.com/photo-1608039755401-742074f0548d?q=80&w=2835',
-    title: 'Perfectly Seasoned',
+    title: 'Perfekt Kryddad',
     span: 'row-span-1',
   },
 ];
@@ -73,10 +73,10 @@ export default function Gallery() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4"
               style={{ fontFamily: 'var(--font-playfair)' }}
             >
-              Visual <span className="text-[#d4af37]">Experience</span>
+              Visuell <span className="text-[#d4af37]">Upplevelse</span>
             </h2>
             <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
-              A glimpse into our culinary artistry and elegant atmosphere
+              En glimt av vår kulinariska konst och eleganta atmosfär
             </p>
           </motion.div>
 

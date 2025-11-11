@@ -17,23 +17,23 @@ export default function Navigation() {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Full Menu', href: '/menu' },
-    { name: 'Gallery', href: isHomePage ? '#gallery' : '/#gallery' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Hem', href: '/' },
+    { name: 'Om Oss', href: '/about' },
+    { name: 'Fullständig Meny', href: '/menu' },
+    { name: 'Galleri', href: isHomePage ? '#gallery' : '/#gallery' },
+    { name: 'Kontakt', href: '/contact' },
   ];
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      transition={{ duration: 0.3 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
           ? 'bg-black/90 backdrop-blur-lg py-4 shadow-lg shadow-black/20'
@@ -82,7 +82,7 @@ export default function Navigation() {
                 href="/contact"
                 className="px-6 py-2.5 bg-[#d4af37] text-black font-semibold rounded-full hover:bg-[#b8941f] transition-all duration-300 hover:scale-105 inline-block"
               >
-                Reserve Table
+                Reservera Bord
               </Link>
             </motion.div>
           </div>
@@ -134,7 +134,7 @@ export default function Navigation() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="px-6 py-3 bg-[#d4af37] text-black font-semibold rounded-full hover:bg-[#b8941f] transition-colors text-center block"
                 >
-                  Reserve Table
+                  Reservera Bord
                 </Link>
               </motion.div>
             </div>

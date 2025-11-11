@@ -5,10 +5,10 @@ import { useRef } from 'react';
 import { Clock, Users, Award, Flame } from 'lucide-react';
 
 const stats = [
-  { icon: Clock, value: '15+', label: 'Years Experience' },
-  { icon: Users, value: '50K+', label: 'Happy Customers' },
-  { icon: Award, value: '25+', label: 'Awards Won' },
-  { icon: Flame, value: '100%', label: 'Fresh Ingredients' },
+  { icon: Clock, value: '15+', label: 'År Erfarenhet' },
+  { icon: Users, value: '50K+', label: 'Nöjda Kunder' },
+  { icon: Award, value: '25+', label: 'Vunna Priser' },
+  { icon: Flame, value: '100%', label: 'Färska Ingredienser' },
 ];
 
 export default function About() {
@@ -66,7 +66,7 @@ export default function About() {
                 <p className="text-5xl font-bold text-black mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
                   15+
                 </p>
-                <p className="text-black font-semibold">Years of Excellence</p>
+                <p className="text-black font-semibold">År av Excellens</p>
               </div>
             </motion.div>
           </motion.div>
@@ -89,7 +89,7 @@ export default function About() {
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
                 style={{ fontFamily: 'var(--font-playfair)' }}
               >
-                Where Tradition Meets{' '}
+                Där Tradition Möter{' '}
                 <span className="text-[#d4af37]">Innovation</span>
               </h2>
 
@@ -99,9 +99,9 @@ export default function About() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 >
-                  At <span className="text-[#d4af37] font-semibold">Sahara Grill</span>, we believe that great food
-                  starts with great ingredients. Our master chefs combine time-honored grilling techniques with
-                  modern culinary innovation to create unforgettable dining experiences.
+                  På <span className="text-[#d4af37] font-semibold">Sahara Grill</span> tror vi att god mat
+                  börjar med bra ingredienser. Våra mästerkockar kombinerar hederliga grilltekn iker med
+                  modern kulinarisk innovation för att skapa oförglömliga matupplevelser.
                 </motion.p>
 
                 <motion.p
@@ -109,8 +109,8 @@ export default function About() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                  Every cut of meat is carefully selected, every vegetable freshly sourced, and every dish is
-                  prepared with passion and precision. We don't just serve food – we create memories.
+                  Varje köttbit är noggrant utvald, varje grönsak färsk, och varje rätt är
+                  förberedd med passion och precision. Vi serverar inte bara mat – vi skapar minnen.
                 </motion.p>
               </div>
 
@@ -148,7 +148,7 @@ export default function About() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Reserve Your Table
+                  Reservera Ditt Bord
                 </motion.a>
               </motion.div>
             </motion.div>

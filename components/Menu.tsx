@@ -8,27 +8,27 @@ import Link from 'next/link';
 const menuCategories = [
   {
     id: 'signature',
-    name: 'Signature Grills',
+    name: 'Signatur Grillar',
     icon: Award,
     items: [
       {
-        name: 'Wagyu Tomahawk Steak',
-        description: 'Premium 32oz bone-in ribeye, grilled to perfection with herb butter',
-        price: '$89',
-        tags: ['Chef\'s Special', 'Premium'],
+        name: 'Wagyu Tomahawk Stek',
+        description: 'Premium 32oz ben-in ribeye, grillad till perfektion med örtsmör',
+        price: '890 kr',
+        tags: ['Kockens Special', 'Premium'],
         image: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=2031',
       },
       {
-        name: 'Mixed Grill Platter',
-        description: 'Lamb chops, beef tenderloin, chicken skewers, and grilled vegetables',
-        price: '$68',
-        tags: ['Popular', 'For Sharing'],
+        name: 'Blandad Grill Tallrik',
+        description: 'Lammkotletter, oxfilé, kycklingspett och grillade grönsaker',
+        price: '680 kr',
+        tags: ['Populär', 'För Delning'],
         image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=2787',
       },
       {
-        name: 'Ribeye Premium Cut',
-        description: '16oz dry-aged ribeye with truffle mashed potatoes',
-        price: '$54',
+        name: 'Ribeye Premium Skär',
+        description: '16oz dry-aged ribeye med tryffelmosa potatis',
+        price: '540 kr',
         tags: ['Premium'],
         image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=2070',
       },
@@ -36,56 +36,56 @@ const menuCategories = [
   },
   {
     id: 'specialties',
-    name: 'House Specialties',
+    name: 'Husets Specialiteter',
     icon: ChefHat,
     items: [
       {
-        name: 'Grilled Salmon Fillet',
-        description: 'Fresh Atlantic salmon with lemon herb sauce and asparagus',
-        price: '$42',
-        tags: ['Healthy Choice'],
+        name: 'Grillad Laxfilé',
+        description: 'Färsk Atlantisk lax med citronörtssås och sparris',
+        price: '420 kr',
+        tags: ['Hälsosamt Val'],
         image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=2787',
       },
       {
-        name: 'BBQ Baby Back Ribs',
-        description: 'Slow-cooked ribs with signature BBQ glaze and coleslaw',
-        price: '$38',
-        tags: ['Popular'],
+        name: 'BBQ Baby Back Revbensspjäll',
+        description: 'Långkokt revbensspjäll med signatur BBQ-glasyr och coleslaw',
+        price: '380 kr',
+        tags: ['Populär'],
         image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069',
       },
       {
-        name: 'Grilled Lamb Rack',
-        description: 'New Zealand lamb with rosemary jus and roasted vegetables',
-        price: '$52',
-        tags: ['Chef\'s Special'],
+        name: 'Grillad Lammrack',
+        description: 'Nyzeeländskt lamm med rosmarin jus och rostade grönsaker',
+        price: '520 kr',
+        tags: ['Kockens Special'],
         image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=2070',
       },
     ],
   },
   {
     id: 'smokehouse',
-    name: 'Smokehouse',
+    name: 'Rökhus',
     icon: Flame,
     items: [
       {
-        name: 'Smoked Brisket',
-        description: '12-hour smoked beef brisket with BBQ beans and cornbread',
-        price: '$36',
-        tags: ['Smoked 12hrs'],
+        name: 'Rökt Brisket',
+        description: '12-timmars rökt oxbringa med BBQ bönor och majsbröd',
+        price: '360 kr',
+        tags: ['Rökt 12 timmar'],
         image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=2787',
       },
       {
-        name: 'Pulled Pork Platter',
-        description: 'Slow-smoked pulled pork with three house-made sauces',
-        price: '$32',
-        tags: ['Popular'],
+        name: 'Pulled Pork Tallrik',
+        description: 'Långrökt pulled pork med tre hemgjorda såser',
+        price: '320 kr',
+        tags: ['Populär'],
         image: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=2031',
       },
       {
-        name: 'Smoked Chicken Wings',
-        description: 'Hickory-smoked wings with buffalo or honey BBQ sauce',
-        price: '$24',
-        tags: ['Appetizer'],
+        name: 'Rökta Kycklingvingar',
+        description: 'Hickory-rökta vingar med buffalo eller honung BBQ sås',
+        price: '240 kr',
+        tags: ['Aptitretare'],
         image: 'https://images.unsplash.com/photo-1608039755401-742074f0548d?q=80&w=2835',
       },
     ],
@@ -127,10 +127,10 @@ export default function Menu() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4"
             style={{ fontFamily: 'var(--font-playfair)' }}
           >
-            Our <span className="text-[#d4af37]">Menu</span>
+            Vår <span className="text-[#d4af37]">Meny</span>
           </h2>
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
-            Crafted with passion, grilled to perfection. Every dish tells a story.
+            Skapad med passion, grillad till perfektion. Varje rätt berättar en historia.
           </p>
         </motion.div>
 
@@ -230,7 +230,7 @@ export default function Menu() {
             <button
               className="px-8 py-4 bg-transparent border-2 border-[#d4af37] text-[#d4af37] font-semibold rounded-full hover:bg-[#d4af37] hover:text-black transition-all duration-300 transform hover:scale-105 active:scale-95"
             >
-              View Full Menu (25+ Items)
+              Se Fullständig Meny (25+ Rätter)
             </button>
           </Link>
         </motion.div>

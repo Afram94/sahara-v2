@@ -17,8 +17,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Sahara Grill - Premium Grill Restaurant",
-  description: "Experience the finest grilled cuisine in an elegant atmosphere. Premium meats, fresh ingredients, and unforgettable flavors.",
+  title: "Sahara Grill - Premium Grillrestaurang",
+  description: "Upplev den finaste grillade maten i en elegant atmosfär. Premium kött, färska ingredienser och oförglömliga smaker.",
 };
 
 export default function RootLayout({

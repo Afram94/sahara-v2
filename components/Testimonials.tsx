@@ -7,44 +7,44 @@ import { useState } from 'react';
 const testimonials = [
   {
     name: 'Sarah Mitchell',
-    location: 'New York, NY',
+    location: 'Stockholm, Sverige',
     rating: 5,
-    quote: 'The Wagyu Tomahawk was exceptional. Every detail speaks of quality and passion.',
+    quote: 'Wagyu Tomahawk var exceptionell. Varje detalj talar om kvalitet och passion.',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop',
   },
   {
     name: 'James Kennedy',
-    location: 'Los Angeles, CA',
+    location: 'Göteborg, Sverige',
     rating: 5,
-    quote: 'Absolutely stunning! The live grill experience is mesmerizing. Perfect for special occasions.',
+    quote: 'Absolut fantastiskt! Live grillupplevelsen är fascinerande. Perfekt för speciella tillfällen.',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop',
   },
   {
     name: 'Emma Laurent',
-    location: 'Chicago, IL',
+    location: 'Malmö, Sverige',
     rating: 5,
-    quote: 'The sommelier helped us find the perfect wine pairing. An unforgettable culinary journey.',
+    quote: 'Sommelieren hjälpte oss hitta den perfekta vinparringen. En oförglömlig kulinarisk resa.',
     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop',
   },
   {
     name: 'Michael Chen',
-    location: 'San Francisco, CA',
+    location: 'Uppsala, Sverige',
     rating: 5,
-    quote: 'As a chef myself, I\'m impressed by the precision. This is grilling elevated to an art form.',
+    quote: 'Som kock själv är jag imponerad av precisionen. Detta är grillning upphöjd till en konstform.',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop',
   },
   {
     name: 'David Martinez',
-    location: 'Miami, FL',
+    location: 'Lund, Sverige',
     rating: 5,
-    quote: 'The ambiance is sophisticated yet welcoming. Service was impeccable from start to finish.',
+    quote: 'Atmosfären är sofistikerad men ändå välkomnande. Service var oklanderlig från början till slut.',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop',
   },
   {
     name: 'Sophia Williams',
-    location: 'Seattle, WA',
+    location: 'Linköping, Sverige',
     rating: 5,
-    quote: 'Every course was a revelation. The chef\'s attention to detail is extraordinary.',
+    quote: 'Varje rätt var en uppenbarelse. Kockens uppmärksamhet på detaljer är extraordinär.',
     image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop',
   },
 ];
@@ -175,8 +175,8 @@ export default function Testimonials() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
               style={{ fontFamily: 'var(--font-playfair)' }}
             >
-              Guests That Stopped
-              <span className="block text-[#d4af37] mt-2">Searching.</span>
+              Gäster Som Slutade
+              <span className="block text-[#d4af37] mt-2">Leta.</span>
             </h2>
 
             {/* Avatars and Rating */}
@@ -208,14 +208,14 @@ export default function Testimonials() {
                   ))}
                 </div>
                 <p className="text-gray-300 font-semibold">
-                  4.9/5 <span className="text-gray-400 font-normal">Based on 1K+ reviews</span>
+                  4.9/5 <span className="text-gray-400 font-normal">Baserat på 1K+ recensioner</span>
                 </p>
               </div>
             </div>
 
             {/* Optional Description */}
             <p className="text-gray-400 text-lg leading-relaxed max-w-md">
-              Join thousands of satisfied guests who discovered their new favorite dining destination at Sahara Grill.
+              Gå med tusentals nöjda gäster som upptäckte sin nya favoritrestaurang på Sahara Grill.
             </p>
           </motion.div>
 

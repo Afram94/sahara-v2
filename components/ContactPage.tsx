@@ -24,15 +24,15 @@ export default function ContactPage() {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.name.trim()) newErrors.name = 'Namn krävs';
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = 'E-post krävs';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = 'E-post är ogiltig';
     }
-    if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
-    if (!formData.date) newErrors.date = 'Date is required';
-    if (!formData.time) newErrors.time = 'Time is required';
+    if (!formData.phone.trim()) newErrors.phone = 'Telefon krävs';
+    if (!formData.date) newErrors.date = 'Datum krävs';
+    if (!formData.time) newErrors.time = 'Tid krävs';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -83,23 +83,23 @@ export default function ContactPage() {
   const contactInfo = [
     {
       icon: MapPin,
-      title: 'Visit Us',
-      details: ['123 Sahara Boulevard', 'Downtown District, NY 10001'],
+      title: 'Besök Oss',
+      details: ['123 Sahara Boulevard', 'Centrum, Stockholm 10001'],
     },
     {
       icon: Phone,
-      title: 'Call Us',
-      details: ['+1 (555) 123-4567', '+1 (555) 765-4321'],
+      title: 'Ring Oss',
+      details: ['+46 (8) 123-4567', '+46 (8) 765-4321'],
     },
     {
       icon: Mail,
-      title: 'Email Us',
-      details: ['reservations@saharagrill.com', 'info@saharagrill.com'],
+      title: 'Maila Oss',
+      details: ['reservationer@saharagrill.se', 'info@saharagrill.se'],
     },
     {
       icon: Clock,
-      title: 'Opening Hours',
-      details: ['Mon-Thu: 5:00 PM - 11:00 PM', 'Fri-Sun: 12:00 PM - 12:00 AM'],
+      title: 'Öppettider',
+      details: ['Mån-Tors: 17:00 - 23:00', 'Fre-Sön: 12:00 - 00:00'],
     },
   ];
 
@@ -125,14 +125,14 @@ export default function ContactPage() {
           transition={{ duration: 1 }}
         >
           <span className="text-gold text-sm tracking-[0.3em] uppercase mb-4 block font-light">
-            Get In Touch
+            Kontakta Oss
           </span>
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-6 tracking-tight">
-            Reserve Your
-            <span className="block text-gold mt-2">Experience</span>
+            Reservera Din
+            <span className="block text-gold mt-2">Upplevelse</span>
           </h1>
           <p className="text-zinc-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            We look forward to serving you an unforgettable culinary experience
+            Vi ser fram emot att servera dig en oförglömlig kulinarisk upplevelse
           </p>
         </motion.div>
       </section>

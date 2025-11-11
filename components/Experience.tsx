@@ -6,23 +6,23 @@ import { Flame, Wine, Users, Calendar } from 'lucide-react';
 const experiences = [
   {
     icon: Flame,
-    title: 'Live Grill Station',
-    description: 'Watch our master chefs prepare your meal on our signature open flame grill with precision and artistry.',
+    title: 'Live Grillstation',
+    description: 'Se våra mästerkockar tillreda din måltid på vår signatur öppen flamma med precision och konst.',
   },
   {
     icon: Wine,
     title: 'Expert Sommelier',
-    description: 'Curated wine selection with personalized pairing recommendations from our certified wine expert.',
+    description: 'Kuraterat vinurval med personliga parrekommendationer från vår certifierade vinexpert.',
   },
   {
     icon: Users,
-    title: 'Private Dining',
-    description: 'Intimate spaces for celebrations and business gatherings with customized menus and dedicated service.',
+    title: 'Privat Matsal',
+    description: 'Intima utrymmen för firanden och affärsmöten med anpassade menyer och dedikerad service.',
   },
   {
     icon: Calendar,
-    title: 'Special Events',
-    description: 'Custom menus and full-service catering for weddings, corporate events, and unforgettable parties.',
+    title: 'Speciella Evenemang',
+    description: 'Anpassade menyer och full-service catering för bröllop, företagsevenemang och oförglömliga fester.',
   },
 ];
 
@@ -62,10 +62,10 @@ export default function Experience() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4"
             style={{ fontFamily: 'var(--font-playfair)' }}
           >
-            The Sahara <span className="text-[#d4af37]">Experience</span>
+            Sahara <span className="text-[#d4af37]">Upplevelsen</span>
           </h2>
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
-            Discover what makes dining with us truly exceptional
+            Upptäck vad som gör att äta hos oss verkligen exceptionellt
           </p>
         </motion.div>
 
@@ -118,20 +118,20 @@ export default function Experience() {
           className="text-center mt-16"
         >
           <p className="text-gray-300 text-lg mb-6">
-            Ready to experience the finest grilling?
+            Redo att uppleva den finaste grillningen?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/menu"
               className="inline-block px-8 py-4 bg-[#d4af37] text-black font-semibold rounded-full hover:bg-[#b8941f] transition-all duration-300 transform hover:scale-105"
             >
-              Explore Our Menu
+              Utforska Vår Meny
             </a>
             <a
               href="/contact"
               className="inline-block px-8 py-4 bg-transparent border-2 border-[#d4af37] text-[#d4af37] font-semibold rounded-full hover:bg-[#d4af37] hover:text-black transition-all duration-300 transform hover:scale-105"
             >
-              Book Your Experience
+              Boka Din Upplevelse
             </a>
           </div>
         </motion.div>
