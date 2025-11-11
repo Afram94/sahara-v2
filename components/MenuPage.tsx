@@ -6,6 +6,7 @@ import { menuData } from '@/lib/menuData';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState(menuData[0].id);
@@ -196,6 +197,7 @@ export default function MenuPage() {
         </motion.div>
       </div>
     </section>
+    <Footer />
     </>
   );
 }

@@ -32,7 +32,7 @@ export default function IntroLoader() {
             ease: [0.76, 0, 0.24, 1], // Custom ease-in-out
             delay: 0.3,
           }}
-          className="fixed inset-0 z-[9999] bg-black flex items-center justify-center"
+          className="fixed inset-0 z-[9999] bg-black flex items-start justify-center pt-72 md:pt-72"
           style={{ pointerEvents: 'none' }}
         >
           {/* Decorative Background Pattern */}

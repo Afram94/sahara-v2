@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Award, Clock, Heart, Users, TrendingUp, Star } from 'lucide-react';
 import { useRef } from 'react';
 import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 export default function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -443,6 +444,7 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
+    <Footer />
     </>
   );
 }

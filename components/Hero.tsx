@@ -2,9 +2,10 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 export default function Hero() {
+  const [showLoader, setShowLoader] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -15,12 +16,107 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
 
+  useEffect(() => {
+    // Hide loader after animation completes
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <section
-      id="home"
-      ref={containerRef}
-      className="relative h-screen w-full overflow-hidden bg-black"
-    >
+    <>
+      {/* Intro Loading Overlay */}
+      {showLoader && (
+        <motion.div
+          initial={{ x: 0 }}
+          animate={{ x: '100%' }}
+          transition={{ duration: 1.5, delay: 1, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-50 bg-black flex items-center justify-center"
+        >
+          {/* Logo - Centered in Viewport */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="text-center px-4"
+          >
+            {/* Top Decorative Line */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: '120px' }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-[1px] bg-[#d4af37] mx-auto mb-8"
+            />
+
+            <motion.h1
+              className="text-6xl md:text-7xl lg:text-8xl font-bold text-[#d4af37] mb-2"
+              style={{ fontFamily: 'var(--font-playfair)' }}
+              initial={{ letterSpacing: '-0.05em' }}
+              animate={{ letterSpacing: '0.1em' }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              SAHARA
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-white text-2xl md:text-3xl tracking-[0.3em] font-light mb-8"
+            >
+              GRILL
+            </motion.p>
+
+            {/* Tagline */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="text-gray-400 text-sm md:text-base tracking-widest uppercase mb-8"
+            >
+              Experience Grilled Perfection
+            </motion.p>
+
+            {/* Bottom Decorative Line */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: '120px' }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="h-[1px] bg-[#d4af37] mx-auto mb-8"
+            />
+
+            {/* Loading Dots */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 1 }}
+              className="flex gap-2 justify-center"
+            >
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  className="w-2 h-2 rounded-full bg-[#d4af37]"
+                  animate={{ opacity: [0.3, 1, 0.3] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    delay: i * 0.2,
+                  }}
+                />
+              ))}
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {/* Main Hero Section */}
+      <section
+        id="home"
+        ref={containerRef}
+        className="relative h-screen w-full overflow-hidden bg-black"
+      >
       {/* Parallax Background Image */}
       <motion.div
         style={{ y, scale }}
@@ -128,5 +224,6 @@ export default function Hero() {
         </motion.a>
       </motion.div>
     </section>
+    </>
   );
 }

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Send, Calendar, Users, MessageSquare } from 'lucide-react';
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -467,6 +468,7 @@ export default function ContactPage() {
         </div>
       </section>
     </div>
+    <Footer />
     </>
   );
 }
