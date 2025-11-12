@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { useParams } from 'next/navigation';
 import { menuData } from '@/lib/menuData';
-import Navigation from '@/components/Navigation';
 import Link from 'next/link';
 import { ChevronLeft, Star } from 'lucide-react';
 import { notFound } from 'next/navigation';
@@ -19,8 +18,6 @@ export default function MenuItemPage() {
 
   return (
     <main className="relative bg-black min-h-screen">
-      <Navigation />
-
       <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -124,16 +121,16 @@ export default function MenuItemPage() {
               {/* Additional Info */}
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-500">Preparation Time</span>
-                  <span className="text-white font-semibold">15-20 mins</span>
+                  <span className="text-gray-500">Tillredningstid</span>
+                  <span className="text-white font-semibold">{item.prepTime || '15-20 min'}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-500">Serving Size</span>
-                  <span className="text-white font-semibold">1-2 persons</span>
+                  <span className="text-gray-500">Portionsstorlek</span>
+                  <span className="text-white font-semibold">{item.servingSize || '1-2 personer'}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-500">Allergens</span>
-                  <span className="text-white font-semibold">Check with staff</span>
+                  <span className="text-gray-500">Allergener</span>
+                  <span className="text-white font-semibold">{item.allergens || 'Kontakta personal'}</span>
                 </div>
               </div>
 

@@ -30,16 +30,11 @@ export default function Navigation() {
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.3 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-black/90 backdrop-blur-lg py-4 shadow-lg shadow-black/20'
-          : 'bg-transparent py-6'
-      }`}
-    >
+    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+      isScrolled
+        ? 'backdrop-blur-md bg-black/95 py-4 shadow-lg'
+        : 'backdrop-blur-sm bg-black/30 py-6'
+    }`}>
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -141,6 +136,6 @@ export default function Navigation() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </header>
   );
 }

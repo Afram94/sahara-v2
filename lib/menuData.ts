@@ -1,4 +1,4 @@
-import { Award, ChefHat, Flame, Wine, Droplet } from 'lucide-react';
+import { Award, ChefHat, Flame, Wine, Droplet, Star, UtensilsCrossed } from 'lucide-react';
 
 export interface MenuItem {
   name: string;
@@ -7,6 +7,9 @@ export interface MenuItem {
   tags: string[];
   image: string;
   slug: string;
+  prepTime?: string;
+  servingSize?: string;
+  allergens?: string;
 }
 
 export interface MenuCategory {
@@ -19,11 +22,170 @@ export interface MenuCategory {
 
 export const menuData: MenuCategory[] = [
   {
-    id: 'signature',
-    name: 'Signatur Grillar',
-    icon: Award,
-    description: 'Våra mest hyllade rätter, grillade till absolut perfektion',
+    id: 'popular',
+    name: 'Populär',
+    icon: Star,
+    description: 'Våra mest älskade rätter som gästerna återkommer för',
     items: [
+      {
+        name: 'Ostrullar',
+        description: 'Serveras med friterad mozzarella ost i filodeg',
+        price: '69 kr',
+        tags: ['Populär', 'Förrätt'],
+        image: '/images/Ostrullar.jpg',
+        slug: 'ostrullar',
+        prepTime: '8-10 min',
+        servingSize: '4 rullar',
+        allergens: 'Mjölk, Gluten, Ägg',
+      },
+      {
+        name: 'Arabisk Shawarma',
+        description: 'Serveras med pommes och Cream toum',
+        price: '149 kr',
+        tags: ['Populär'],
+        image: '/images/Arabisk_Shawarma.jpg',
+        slug: 'arabisk-shawarma',
+        prepTime: '15-20 min',
+        servingSize: '1 person',
+        allergens: 'Gluten, Vitlök, Mjölk',
+      },
+      {
+        name: 'Kycklingspett',
+        description: '2 st kycklingspett med grillade grönsaker',
+        price: '169 kr',
+        tags: ['Populär'],
+        image: '/images/Kycklingspett.jpg',
+        slug: 'kycklingspett',
+        prepTime: '15-20 min',
+        servingSize: '1 person',
+        allergens: 'Ingen',
+      },
+    ],
+  },
+  {
+    id: 'varma-meza',
+    name: 'Varma Meza',
+    icon: UtensilsCrossed,
+    description: 'Varma förrätter perfekta för delning',
+    items: [
+      {
+        name: 'Ostrullar',
+        description: 'Serveras med friterad mozzarella ost i filodeg',
+        price: '69 kr',
+        tags: ['Populär', 'Förrätt'],
+        image: '/images/Ostrullar.jpg',
+        slug: 'ostrullar',
+        prepTime: '8-10 min',
+        servingSize: '4 rullar',
+        allergens: 'Mjölk, Gluten, Ägg',
+      },
+      {
+        name: 'Halloumi',
+        description: 'Serveras med grillad halloumiost',
+        price: '89 kr',
+        tags: ['Förrätt'],
+        image: '/images/halloumi.jpg',
+        slug: 'halloumi',
+        prepTime: '6-8 min',
+        servingSize: '1 portion',
+        allergens: 'Mjölk',
+      },
+      {
+        name: 'Kebbe Trabolesieh',
+        description: 'Serveras med friterad nötfärs fyllda bulgurbollar',
+        price: '89 kr',
+        tags: ['Förrätt'],
+        image: '/images/kebbe-trabolesieh.jpg',
+        slug: 'kebbe-trabolesieh',
+        prepTime: '10-12 min',
+        servingSize: '1 portion',
+        allergens: 'Gluten',
+      },
+      {
+        name: 'Sambosek Bellahme',
+        description: 'Serveras med nötfärspiroger',
+        price: '89 kr',
+        tags: ['Förrätt'],
+        image: '/images/sambosek-bellahme.jpg',
+        slug: 'sambosek-bellahme',
+        prepTime: '8-10 min',
+        servingSize: '1 portion',
+        allergens: 'Gluten',
+      },
+    ],
+  },
+  {
+    id: 'grillratter',
+    name: 'Grillrätter',
+    icon: Flame,
+    description: 'Färska råvaror grillade till perfektion',
+    items: [
+      {
+        name: 'Kycklingspett',
+        description: '2 st kycklingspett med grillade grönsaker',
+        price: '169 kr',
+        tags: ['Populär'],
+        image: '/images/Kycklingspett.jpg',
+        slug: 'kycklingspett',
+        prepTime: '15-20 min',
+        servingSize: '1 person',
+        allergens: 'Ingen',
+      },
+      {
+        name: 'Shish Kebab',
+        description: '2 st nöttfärsspett med grillade grönsaker',
+        price: '169 kr',
+        tags: ['Populär'],
+        image: '/images/Shish_Kebab1.jpg',
+        slug: 'shish-kebab',
+        prepTime: '15-20 min',
+        servingSize: '1 person',
+        allergens: 'Ingen',
+      },
+      {
+        name: 'Urfa Kebab',
+        description: '2 st nöttfärsspett med grillade grönsaker. Stark',
+        price: '169 kr',
+        tags: ['Stark'],
+        image: '/images/Urfa_Kebab.jpg',
+        slug: 'urfa-kebab',
+        prepTime: '15-18 min',
+        servingSize: '1 person',
+        allergens: 'Ingen',
+      },
+      {
+        name: 'Sahara Mix Spett',
+        description: '3 st spett serveras med Fläsk, shish kebab, kyckling och grillade grönsaker',
+        price: '209 kr',
+        tags: ['För Delning'],
+        image: '/images/sahara-mix-spett.jpg',
+        slug: 'sahara-mix-spett',
+        prepTime: '15-25 min',
+        servingSize: '1-2 personer',
+        allergens: 'Ingen',
+      },
+      {
+        name: 'Fläskfilespett',
+        description: '2 st fläskfiléspett med grillade grönsaker',
+        price: '169 kr',
+        tags: [],
+        image: '/images/flaskfilespett.jpg',
+        slug: 'flaskfilespett',
+        prepTime: '15-25 min',
+        servingSize: '1 person',
+        allergens: 'Ingen',
+      },
+      {
+        name: 'Lammspett',
+        description: '2 st lammspett med grillade grönsaker',
+        price: '209 kr',
+        tags: [],
+        image: '/images/lammspett.jpg',
+        slug: 'lammspett',
+        prepTime: '15-25 min',
+        servingSize: '1 person',
+        allergens: 'Ingen',
+      },
       {
         name: 'Wagyu Tomahawk Biff',
         description: 'Premium 900g entrecôte med ben, grillad till perfektion med örtsmör och säsongens grönsaker',
@@ -31,6 +193,9 @@ export const menuData: MenuCategory[] = [
         tags: ['Kockens Special', 'Premium'],
         image: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=2031',
         slug: 'wagyu-tomahawk-steak',
+        prepTime: '25-30 min',
+        servingSize: '1-2 personer',
+        allergens: 'Mjölk (smör)',
       },
       {
         name: 'Mixad Grill Tallrik',
@@ -64,14 +229,6 @@ export const menuData: MenuCategory[] = [
     icon: ChefHat,
     description: 'Unika kreationer skapade av våra mästerkockar',
     items: [
-      {
-        name: 'Grillad Laxfilé',
-        description: 'Färsk atlantlax med citronörtssås, sparris och vilt ris',
-        price: '420 kr',
-        tags: ['Hälsosamt Val', 'Skaldjur'],
-        image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=2787',
-        slug: 'grilled-salmon-fillet',
-      },
       {
         name: 'BBQ Revbensspjäll',
         description: 'Långkokt revben med signatur BBQ-glasyr, coleslaw och majsbröd',

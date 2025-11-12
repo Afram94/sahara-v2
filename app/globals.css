@@ -31,14 +31,11 @@ body {
 }
 
 /* Performance optimizations */
-* {
+img, video {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-}
-
-img, video {
   will-change: transform;
 }
 
