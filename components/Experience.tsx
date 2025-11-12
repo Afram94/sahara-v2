@@ -1,44 +1,22 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Award, Shield, Clock, Heart, Star, TrendingUp } from 'lucide-react';
+import { Star } from 'lucide-react';
 import Image from 'next/image';
 
-const benefits = [
+const features = [
   {
-    icon: Award,
-    title: 'Prisbelönt Kvalitet',
-    stat: '15+ Utmärkelser',
-    description: 'Erkänd av Michelin Guide och White Guide för enastående mat och service.',
-    highlight: true,
+    title: 'Traditionell Grillkonst',
+    description: 'Våra kockar behärskar den urgamla konsten att grilla över öppen låga, vilket ger köttet dess karakteristiska smak och saftighet.',
   },
   {
-    icon: Shield,
-    title: '100% Färska Ingredienser',
-    stat: 'Dagliga Leveranser',
-    description: 'Direktkontakt med lokala gårdar och leverantörer för högsta kvalitet.',
-    highlight: false,
+    title: 'Färska Råvaror Dagligen',
+    description: 'Vi väljer noggrant ut de bästa ingredienserna varje dag för att garantera optimal kvalitet och smak i varje rätt.',
   },
   {
-    icon: Clock,
-    title: 'Garanterad Tillredning',
-    stat: 'Perfekt Varje Gång',
-    description: 'Våra mästerkockar säkerställer att varje rätt når din exakta önskade nivå.',
-    highlight: false,
+    title: 'Autentiska Smaker',
+    description: 'Varje rätt är inspirerad av äkta recept från Mellanöstern, tillagade med passion och respekt för traditionen.',
   },
-  {
-    icon: Heart,
-    title: 'Hållbar Matkultur',
-    stat: 'Miljöcertifierad',
-    description: 'Engagerade i hållbar matproduktion och minskning av matsvinn.',
-    highlight: true,
-  },
-];
-
-const socialProof = [
-  { metric: '50K+', label: 'Nöjda Gäster Årligen' },
-  { metric: '4.9/5.0', label: 'Genomsnittligt Betyg' },
-  { metric: '95%', label: 'Återvändande Kunder' },
 ];
 
 export default function Experience() {
@@ -86,105 +64,169 @@ export default function Experience() {
           </p>
         </motion.div>
 
-        {/* Social Proof Stats */}
+        {/* Features Section - Engaging Design */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto mb-20"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-7xl mx-auto mb-20"
         >
-          {socialProof.map((item, index) => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Left Side - First Feature (Large) */}
             <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
-              className="text-center"
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="lg:row-span-2"
             >
-              <div className="relative inline-block mb-2">
-                <div className="text-3xl md:text-5xl font-bold text-[#d4af37]" style={{ fontFamily: 'var(--font-playfair)' }}>
-                  {item.metric}
-                </div>
-                <div className="absolute -top-1 -right-1">
-                  <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-[#d4af37]" />
-                </div>
-              </div>
-              <p className="text-gray-400 text-xs md:text-sm font-medium">{item.label}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Benefits Grid */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-16">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                className="group relative"
-              >
-                <div
-                  className={`relative bg-zinc-900/50 backdrop-blur-sm border ${
-                    benefit.highlight ? 'border-[#d4af37]/50' : 'border-zinc-800'
-                  } rounded-2xl p-8 hover:border-[#d4af37] transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#d4af37]/20 h-full overflow-hidden`}
-                >
-                  {/* Highlight Badge */}
-                  {benefit.highlight && (
-                    <div className="absolute top-4 right-4">
-                      <div className="flex items-center gap-1 px-3 py-1 bg-[#d4af37] rounded-full">
-                        <Star className="w-3 h-3 text-black fill-black" />
-                        <span className="text-black text-xs font-bold">Populär</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Animated Background Glow */}
-                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#d4af37]/5 rounded-full blur-3xl group-hover:bg-[#d4af37]/10 transition-all duration-500" />
-
-                  <div className="relative">
-                    {/* Icon & Stat */}
-                    <div className="flex items-start justify-between mb-6">
-                      <div className="w-14 h-14 rounded-xl bg-[#d4af37]/10 flex items-center justify-center group-hover:bg-[#d4af37]/20 group-hover:scale-110 transition-all duration-300">
-                        <Icon className="w-7 h-7 text-[#d4af37]" strokeWidth={1.5} />
-                      </div>
-                      <div className="text-right">
-                        <div className="text-[#d4af37] text-sm font-bold">{benefit.stat}</div>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <h3
-                      className="text-2xl font-bold text-white mb-3 group-hover:text-[#d4af37] transition-colors duration-300"
+              <div className="relative h-full bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 backdrop-blur-sm border border-zinc-800/50 rounded-3xl p-8 md:p-10 lg:p-12 overflow-hidden group hover:border-[#d4af37]/50 transition-all duration-500">
+                {/* Decorative Background Elements */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#d4af37]/5 rounded-full blur-3xl group-hover:bg-[#d4af37]/10 transition-all duration-700" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#d4af37]/5 rounded-full blur-3xl" />
+                
+                <div className="relative z-10 h-full flex flex-col">
+                  {/* Large Number */}
+                  <div className="mb-6">
+                    <span 
+                      className="text-8xl md:text-9xl font-bold text-[#d4af37]/20 leading-none"
                       style={{ fontFamily: 'var(--font-playfair)' }}
                     >
-                      {benefit.title}
+                      01
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 flex flex-col justify-center">
+                    <h3
+                      className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
+                      style={{ fontFamily: 'var(--font-playfair)' }}
+                    >
+                      {features[0].title}
                     </h3>
-                    <p className="text-gray-400 leading-relaxed text-[15px]">
-                      {benefit.description}
+                    <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
+                      {features[0].description}
+                    </p>
+                  </div>
+
+                  {/* Decorative Bottom Line */}
+                  <div className="mt-8 pt-6 border-t border-[#d4af37]/20">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-[#d4af37] animate-pulse" />
+                      <span className="text-[#d4af37] text-sm font-medium tracking-wider">SIGNATURE TECHNIQUE</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Side - Two Smaller Features Stacked */}
+            <div className="space-y-8">
+              {/* Feature 2 */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <div className="relative bg-zinc-900/60 backdrop-blur-sm border border-zinc-800/50 rounded-3xl p-8 md:p-10 overflow-hidden group hover:border-[#d4af37]/50 transition-all duration-500 hover:transform hover:-translate-y-1">
+                  {/* Background Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/0 to-[#d4af37]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="relative z-10">
+                    {/* Number & Icon Combined */}
+                    <div className="flex items-center justify-between mb-6">
+                      <span 
+                        className="text-6xl font-bold text-[#d4af37]/30"
+                        style={{ fontFamily: 'var(--font-playfair)' }}
+                      >
+                        02
+                      </span>
+                      <div className="w-16 h-16 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <svg className="w-8 h-8 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <h3
+                      className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight"
+                      style={{ fontFamily: 'var(--font-playfair)' }}
+                    >
+                      {features[1].title}
+                    </h3>
+                    <p className="text-gray-400 text-base leading-relaxed">
+                      {features[1].description}
                     </p>
 
-                    {/* Progress Bar */}
+                    {/* Progress Line */}
                     <div className="mt-6 h-1 bg-zinc-800 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
-                        whileInView={{ width: benefit.highlight ? '95%' : '85%' }}
+                        whileInView={{ width: '85%' }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.6 + index * 0.1 }}
+                        transition={{ duration: 1.2, delay: 0.5 }}
                         className="h-full bg-gradient-to-r from-[#d4af37] to-[#f4d47c]"
                       />
                     </div>
                   </div>
                 </div>
               </motion.div>
-            );
-          })}
-        </div>
+
+              {/* Feature 3 */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                <div className="relative bg-zinc-900/60 backdrop-blur-sm border border-zinc-800/50 rounded-3xl p-8 md:p-10 overflow-hidden group hover:border-[#d4af37]/50 transition-all duration-500 hover:transform hover:-translate-y-1">
+                  {/* Background Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/0 to-[#d4af37]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="relative z-10">
+                    {/* Number & Icon Combined */}
+                    <div className="flex items-center justify-between mb-6">
+                      <span 
+                        className="text-6xl font-bold text-[#d4af37]/30"
+                        style={{ fontFamily: 'var(--font-playfair)' }}
+                      >
+                        03
+                      </span>
+                      <div className="w-16 h-16 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <svg className="w-8 h-8 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <h3
+                      className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight"
+                      style={{ fontFamily: 'var(--font-playfair)' }}
+                    >
+                      {features[2].title}
+                    </h3>
+                    <p className="text-gray-400 text-base leading-relaxed">
+                      {features[2].description}
+                    </p>
+
+                    {/* Progress Line */}
+                    <div className="mt-6 h-1 bg-zinc-800 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '90%' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, delay: 0.6 }}
+                        className="h-full bg-gradient-to-r from-[#d4af37] to-[#f4d47c]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Image Showcase with Overlay Text */}
         <motion.div

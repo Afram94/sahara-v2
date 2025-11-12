@@ -44,30 +44,6 @@ img, video {
   will-change: transform;
 }
 
-/* Luxury image treatment for food photos */
-.food-image {
-  filter: contrast(1.1) brightness(1.05) saturate(1.15);
-  transition: all 0.4s ease;
-}
-
-.food-image:hover {
-  filter: contrast(1.15) brightness(1.08) saturate(1.2);
-  transform: scale(1.02);
-}
-
-/* Gold border treatment for featured images */
-.featured-dish {
-  position: relative;
-  padding: 4px;
-  background: linear-gradient(135deg, #d4af37, #b8941f, #d4af37);
-  border-radius: 12px;
-}
-
-.featured-dish img {
-  border-radius: 8px;
-  display: block;
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
 }
