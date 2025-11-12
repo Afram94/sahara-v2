@@ -197,8 +197,8 @@ export default function Experience() {
           {/* Image */}
           <div className="relative h-[400px] md:h-[500px]">
             <Image
-              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070"
-              alt="Sahara Grill Interior"
+              src="/images/mezze-platter.jpg"
+              alt="Sahara Grill Traditional Mezze"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700"
             />

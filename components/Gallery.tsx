@@ -6,8 +6,8 @@ import { X } from 'lucide-react';
 
 const galleryImages = [
   {
-    url: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069',
-    title: 'Premium Grillade Stekar',
+    url: '/images/mezze-platter.jpg',
+    title: 'Traditionella Meze',
     span: 'row-span-2',
   },
   {
@@ -26,7 +26,7 @@ const galleryImages = [
     span: 'row-span-1',
   },
   {
-    url: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=2070',
+    url: '/images/cocktail_1.jpg',
     title: 'Lammdelikatess',
     span: 'row-span-2',
   },

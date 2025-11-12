@@ -2,11 +2,65 @@
 
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Send, Calendar, Users, MessageSquare } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export default function ContactPage() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Check if restaurant is currently open
+  useEffect(() => {
+    const checkOpenStatus = () => {
+      const now = new Date();
+      const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const currentTime = hours * 60 + minutes; // Convert to minutes since midnight
+
+      // Monday = Closed
+      if (day === 1) {
+        setIsOpen(false);
+        return;
+      }
+
+      // Tuesday-Thursday: 16:00-23:00
+      if (day >= 2 && day <= 4) {
+        setIsOpen(currentTime >= 16 * 60 && currentTime < 23 * 60);
+        return;
+      }
+
+      // Friday-Saturday: 16:00-00:00 (next day)
+      // Handle after midnight (00:00-01:00) as still open from previous day
+      if (day === 5 || day === 6) {
+        setIsOpen(currentTime >= 16 * 60 || currentTime < 1 * 60);
+        return;
+      }
+
+      // Sunday after midnight (00:00-01:00) - still open from Saturday
+      if (day === 0 && currentTime < 1 * 60) {
+        setIsOpen(true);
+        return;
+      }
+
+      // Sunday: 16:00-23:00
+      if (day === 0) {
+        setIsOpen(currentTime >= 16 * 60 && currentTime < 23 * 60);
+        return;
+      }
+
+      setIsOpen(false);
+    };
+
+    // Check immediately
+    checkOpenStatus();
+
+    // Then check every minute
+    const interval = setInterval(checkOpenStatus, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -84,22 +138,33 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: 'Besök Oss',
-      details: ['123 Sahara Boulevard', 'Centrum, Stockholm 10001'],
+      details: ['Fredriksdalsgatan 28', '602 23 Norrköping, Sverige'],
+      link: 'https://maps.google.com/?q=Fredriksdalsgatan+28,+602+23+Norrköping',
+      linkText: 'Öppna i kartor',
     },
     {
       icon: Phone,
       title: 'Ring Oss',
-      details: ['+46 (8) 123-4567', '+46 (8) 765-4321'],
+      details: ['+46 70 744 84 42'],
+      link: 'tel:+46707448442',
+      linkText: 'Ring nu',
     },
     {
       icon: Mail,
       title: 'Maila Oss',
-      details: ['reservationer@saharagrill.se', 'info@saharagrill.se'],
+      details: ['info@sahararestaurang.se', 'bokning@sahararestaurang.se'],
+      link: 'mailto:info@sahararestaurang.se',
+      linkText: 'Skicka mail',
     },
     {
       icon: Clock,
       title: 'Öppettider',
-      details: ['Mån-Tors: 17:00 - 23:00', 'Fre-Sön: 12:00 - 00:00'],
+      details: [
+        'Tisdag - Torsdag: 16:00 - 23:00',
+        'Fredag - Lördag: 16:00 - 00:00',
+        'Söndag: 16:00 - 23:00',
+        'Måndag: Stängt',
+      ],
     },
   ];
 
@@ -138,27 +203,86 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-20 border-b border-zinc-800">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="py-20 relative">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: 'radial-gradient(circle, #d4af37 1px, transparent 1px)',
+              backgroundSize: '30px 30px',
+            }}
+          />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="bg-zinc-900/50 border border-zinc-800 p-6 hover:border-gold transition-all duration-300 group"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative"
               >
-                <info.icon className="w-8 h-8 text-gold mb-4 group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="text-white font-semibold text-lg mb-3 group-hover:text-gold transition-colors duration-300">
-                  {info.title}
-                </h3>
-                {info.details.map((detail, idx) => (
-                  <p key={idx} className="text-zinc-400 text-sm leading-relaxed">
-                    {detail}
-                  </p>
-                ))}
+                {/* Card Background with Gradient Border Effect */}
+                <div className="absolute -inset-[1px] bg-gradient-to-br from-gold/30 via-gold/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500" />
+                
+                <div className="relative bg-zinc-900/80 backdrop-blur-md border border-zinc-800/50 rounded-xl p-6 hover:border-gold/30 transition-all duration-500 h-full flex flex-col">
+                  {/* Icon Container */}
+                  <div className="mb-5">
+                    <div className="relative inline-flex">
+                      {/* Icon Glow Effect */}
+                      <div className="absolute inset-0 bg-gold/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="relative bg-gradient-to-br from-zinc-800 to-zinc-900 p-3.5 rounded-lg border border-zinc-700/50 group-hover:border-gold/50 group-hover:shadow-lg group-hover:shadow-gold/20 transition-all duration-500">
+                        <info.icon className="w-6 h-6 text-gold group-hover:scale-110 transition-transform duration-300" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-white font-serif text-lg mb-4 tracking-wide group-hover:text-gold transition-colors duration-300">
+                    {info.title}
+                  </h3>
+                  
+                  {/* Details */}
+                  <div className="space-y-2 mb-auto">
+                    {info.details.map((detail, idx) => (
+                      <p 
+                        key={idx} 
+                        className="text-zinc-400 text-sm leading-relaxed group-hover:text-zinc-300 transition-colors duration-300"
+                      >
+                        {detail}
+                      </p>
+                    ))}
+                  </div>
+
+                  {/* Action Link */}
+                  {info.link && (
+                    <a
+                      href={info.link}
+                      className="mt-6 pt-4 border-t border-zinc-800/50 group-hover:border-gold/20 transition-colors duration-300 flex items-center gap-2 text-gold/80 hover:text-gold text-sm font-medium"
+                    >
+                      <span>{info.linkText}</span>
+                      <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  )}
+
+                  {/* Opening Hours Special Styling */}
+                  {!info.link && (
+                    <div className="mt-4 pt-4 border-t border-zinc-800/50">
+                      <div className="flex items-center gap-2 text-xs">
+                        <div className={`w-2 h-2 rounded-full ${isOpen ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} />
+                        <span className={isOpen ? 'text-green-400' : 'text-red-400'}>
+                          {isOpen ? 'Öppet nu' : 'Stängt'}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -178,14 +302,14 @@ export default function ContactPage() {
             >
               <div className="mb-8">
                 <span className="text-gold text-sm tracking-[0.3em] uppercase mb-4 block">
-                  Reservation
+                  Bordsbokning
                 </span>
                 <h2 className="font-serif text-4xl md:text-5xl text-white mb-4">
-                  Book Your Table
+                  Boka Ditt Bord
                 </h2>
                 <p className="text-zinc-400 leading-relaxed">
-                  Fill out the form below and we'll confirm your reservation within 24 hours. 
-                  For same-day reservations, please call us directly.
+                  Fyll i formuläret nedan så bekräftar vi din bokning inom 24 timmar. 
+                  För bokning samma dag, vänligen ring oss direkt.
                 </p>
               </div>
 
@@ -193,7 +317,7 @@ export default function ContactPage() {
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="block text-white mb-2 text-sm font-medium">
-                    Full Name *
+                    Fullständigt Namn *
                   </label>
                   <input
                     type="text"
@@ -203,8 +327,8 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className={`w-full bg-zinc-900 border ${
                       errors.name ? 'border-red-500' : 'border-zinc-800'
-                    } text-white px-4 py-3 focus:outline-none focus:border-gold transition-colors duration-300`}
-                    placeholder="John Doe"
+                    } text-white px-4 py-3 rounded-lg focus:outline-none focus:border-gold transition-colors duration-300`}
+                    placeholder="Ditt namn"
                   />
                   {errors.name && (
                     <p className="text-red-500 text-xs mt-1">{errors.name}</p>
@@ -215,7 +339,7 @@ export default function ContactPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="email" className="block text-white mb-2 text-sm font-medium">
-                      Email Address *
+                      E-postadress *
                     </label>
                     <input
                       type="email"
@@ -225,8 +349,8 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className={`w-full bg-zinc-900 border ${
                         errors.email ? 'border-red-500' : 'border-zinc-800'
-                      } text-white px-4 py-3 focus:outline-none focus:border-gold transition-colors duration-300`}
-                      placeholder="john@example.com"
+                      } text-white px-4 py-3 rounded-lg focus:outline-none focus:border-gold transition-colors duration-300`}
+                      placeholder="din@epost.se"
                     />
                     {errors.email && (
                       <p className="text-red-500 text-xs mt-1">{errors.email}</p>
@@ -235,7 +359,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="phone" className="block text-white mb-2 text-sm font-medium">
-                      Phone Number *
+                      Telefonnummer *
                     </label>
                     <input
                       type="tel"
@@ -245,8 +369,8 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className={`w-full bg-zinc-900 border ${
                         errors.phone ? 'border-red-500' : 'border-zinc-800'
-                      } text-white px-4 py-3 focus:outline-none focus:border-gold transition-colors duration-300`}
-                      placeholder="+1 (555) 123-4567"
+                      } text-white px-4 py-3 rounded-lg focus:outline-none focus:border-gold transition-colors duration-300`}
+                      placeholder="+46 70 123 45 67"
                     />
                     {errors.phone && (
                       <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
@@ -259,7 +383,7 @@ export default function ContactPage() {
                   <div>
                     <label htmlFor="date" className="block text-white mb-2 text-sm font-medium">
                       <Calendar className="inline w-4 h-4 mr-1" />
-                      Date *
+                      Datum *
                     </label>
                     <input
                       type="date"
@@ -270,7 +394,7 @@ export default function ContactPage() {
                       min={new Date().toISOString().split('T')[0]}
                       className={`w-full bg-zinc-900 border ${
                         errors.date ? 'border-red-500' : 'border-zinc-800'
-                      } text-white px-4 py-3 focus:outline-none focus:border-gold transition-colors duration-300`}
+                      } text-white px-4 py-3 rounded-lg focus:outline-none focus:border-gold transition-colors duration-300`}
                     />
                     {errors.date && (
                       <p className="text-red-500 text-xs mt-1">{errors.date}</p>
@@ -280,7 +404,7 @@ export default function ContactPage() {
                   <div>
                     <label htmlFor="time" className="block text-white mb-2 text-sm font-medium">
                       <Clock className="inline w-4 h-4 mr-1" />
-                      Time *
+                      Tid *
                     </label>
                     <input
                       type="time"
@@ -290,7 +414,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className={`w-full bg-zinc-900 border ${
                         errors.time ? 'border-red-500' : 'border-zinc-800'
-                      } text-white px-4 py-3 focus:outline-none focus:border-gold transition-colors duration-300`}
+                      } text-white px-4 py-3 rounded-lg focus:outline-none focus:border-gold transition-colors duration-300`}
                     />
                     {errors.time && (
                       <p className="text-red-500 text-xs mt-1">{errors.time}</p>
@@ -300,21 +424,21 @@ export default function ContactPage() {
                   <div>
                     <label htmlFor="guests" className="block text-white mb-2 text-sm font-medium">
                       <Users className="inline w-4 h-4 mr-1" />
-                      Guests
+                      Antal Gäster
                     </label>
                     <select
                       id="guests"
                       name="guests"
                       value={formData.guests}
                       onChange={handleChange}
-                      className="w-full bg-zinc-900 border border-zinc-800 text-white px-4 py-3 focus:outline-none focus:border-gold transition-colors duration-300"
+                      className="w-full bg-zinc-900 border border-zinc-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-gold transition-colors duration-300"
                     >
                       {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
                         <option key={num} value={num}>
-                          {num} {num === 1 ? 'Guest' : 'Guests'}
+                          {num} {num === 1 ? 'gäst' : 'gäster'}
                         </option>
                       ))}
-                      <option value="9+">9+ Guests</option>
+                      <option value="9+">9+ gäster</option>
                     </select>
                   </div>
                 </div>
@@ -323,7 +447,7 @@ export default function ContactPage() {
                 <div>
                   <label htmlFor="message" className="block text-white mb-2 text-sm font-medium">
                     <MessageSquare className="inline w-4 h-4 mr-1" />
-                    Special Requests (Optional)
+                    Särskilda Önskemål (Valfritt)
                   </label>
                   <textarea
                     id="message"
@@ -331,8 +455,8 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full bg-zinc-900 border border-zinc-800 text-white px-4 py-3 focus:outline-none focus:border-gold transition-colors duration-300 resize-none"
-                    placeholder="Dietary restrictions, allergies, special occasions, seating preferences..."
+                    className="w-full bg-zinc-900 border border-zinc-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-gold transition-colors duration-300 resize-none"
+                    placeholder="Allergier, specialkost, högtider, sittplatspreferenser..."
                   />
                 </div>
 
@@ -342,12 +466,12 @@ export default function ContactPage() {
                   disabled={isSubmitting || isSuccess}
                   whileHover={{ scale: isSubmitting || isSuccess ? 1 : 1.02 }}
                   whileTap={{ scale: isSubmitting || isSuccess ? 1 : 0.98 }}
-                  className={`w-full py-4 font-semibold tracking-wide transition-all duration-300 flex items-center justify-center gap-2 ${
+                  className={`w-full py-4 rounded-lg font-semibold tracking-wide transition-all duration-300 flex items-center justify-center gap-2 ${
                     isSuccess
                       ? 'bg-green-600 text-white'
                       : isSubmitting
                       ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed'
-                      : 'bg-gold text-black hover:bg-gold/90'
+                      : 'bg-gold text-black hover:bg-gold/90 hover:shadow-lg hover:shadow-gold/20'
                   }`}
                 >
                   {isSuccess ? (
@@ -355,7 +479,7 @@ export default function ContactPage() {
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      RESERVATION SUBMITTED
+                      BOKNING MOTTAGEN
                     </>
                   ) : isSubmitting ? (
                     <>
@@ -363,18 +487,18 @@ export default function ContactPage() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      SUBMITTING...
+                      SKICKAR...
                     </>
                   ) : (
                     <>
                       <Send className="w-5 h-5" />
-                      CONFIRM RESERVATION
+                      BEKRÄFTA BOKNING
                     </>
                   )}
                 </motion.button>
 
                 <p className="text-zinc-500 text-xs text-center">
-                  By submitting this form, you agree to our privacy policy and terms of service.
+                  Genom att skicka detta formulär godkänner du vår integritetspolicy och användarvillkor.
                 </p>
               </form>
             </motion.div>
@@ -390,7 +514,7 @@ export default function ContactPage() {
               {/* Map */}
               <div className="relative h-[400px] bg-zinc-900 border border-zinc-800 overflow-hidden group">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2075.4167890123456!2d16.18634!3d58.59167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465c2e7e7e7e7e7e%3A0x7e7e7e7e7e7e7e7e!2sFredriksdalsgatan%2028%2C%20602%2023%20Norrk%C3%B6ping!5e0!3m2!1ssv!2sse!4v1234567890123!5m2!1ssv!2sse"
                   width="100%"
                   height="100%"
                   style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)' }}
@@ -402,64 +526,60 @@ export default function ContactPage() {
               </div>
 
               {/* Private Events */}
-              <div className="bg-zinc-900/50 border border-zinc-800 p-8">
+              <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-8">
                 <h3 className="font-serif text-2xl text-white mb-4">
-                  Private Events & Catering
+                  Privata Event & Catering
                 </h3>
                 <p className="text-zinc-400 leading-relaxed mb-6">
-                  Planning a special event? Our private dining rooms and catering services 
-                  are perfect for celebrations, corporate events, and intimate gatherings.
+                  Planerar du ett speciellt evenemang? Våra privata matsalar och cateringtjänster 
+                  är perfekta för firanden, företagsevent och intima sammankomster.
                 </p>
                 <ul className="space-y-3 text-zinc-400 mb-6">
                   <li className="flex items-start gap-2">
                     <span className="text-gold mt-1">•</span>
-                    <span>Private dining rooms for 10-50 guests</span>
+                    <span>Privata matsalar för 30-200 gäster</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-gold mt-1">•</span>
-                    <span>Custom menu planning with our chef</span>
+                    <span>Anpassad menyplanering med vår kock</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-gold mt-1">•</span>
-                    <span>Full-service catering available</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-gold mt-1">•</span>
-                    <span>Wine pairing and bar services</span>
+                    <span>Fullservice catering tillgänglig</span>
                   </li>
                 </ul>
                 <motion.a
-                  href="mailto:events@saharagrill.com"
+                  href="mailto:info@sahararestaurang.se"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-block border-2 border-gold text-gold px-6 py-3 font-semibold tracking-wide hover:bg-gold hover:text-black transition-colors duration-300"
+                  className="inline-block border-2 border-gold text-gold px-6 py-3 rounded-lg font-semibold tracking-wide hover:bg-gold hover:text-black transition-colors duration-300"
                 >
-                  INQUIRE ABOUT EVENTS
+                  FRÅGA OM EVENT
                 </motion.a>
               </div>
 
               {/* Quick Contact */}
-              <div className="bg-gradient-to-br from-gold/10 to-transparent border border-gold/30 p-8">
+              <div className="bg-gradient-to-br from-gold/10 to-transparent border border-gold/30 rounded-xl p-8">
                 <h3 className="font-serif text-2xl text-white mb-4">
-                  Need Immediate Assistance?
+                  Behöver Du Hjälp Direkt?
                 </h3>
                 <p className="text-zinc-300 leading-relaxed mb-6">
-                  Our reservations team is available to help you plan the perfect dining experience.
+                  Vårt bokningsteam finns tillgängligt för att hjälpa dig planera den perfekta matupplevelsen.
                 </p>
                 <div className="space-y-3">
                   <a
-                    href="tel:+15551234567"
+                    href="tel:+46707448442"
                     className="flex items-center gap-3 text-gold hover:text-gold/80 transition-colors duration-300"
                   >
                     <Phone className="w-5 h-5" />
-                    <span className="text-lg font-semibold">+1 (555) 123-4567</span>
+                    <span className="text-lg font-semibold">+46 70 744 84 42</span>
                   </a>
                   <a
-                    href="mailto:reservations@saharagrill.com"
+                    href="mailto:info@sahararestaurang.se"
                     className="flex items-center gap-3 text-gold hover:text-gold/80 transition-colors duration-300"
                   >
                     <Mail className="w-5 h-5" />
-                    <span>reservations@saharagrill.com</span>
+                    <span>info@sahararestaurang.se</span>
                   </a>
                 </div>
               </div>

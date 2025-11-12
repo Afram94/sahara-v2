@@ -25,7 +25,6 @@ export default function Navigation() {
     { name: 'Hem', href: '/' },
     { name: 'Om Oss', href: '/about' },
     { name: 'Fullständig Meny', href: '/menu' },
-    { name: 'Galleri', href: isHomePage ? '#gallery' : '/#gallery' },
     { name: 'Kontakt', href: '/contact' },
   ];
 
@@ -46,7 +45,7 @@ export default function Navigation() {
               transition={{ duration: 0.2 }}
             >
               <span className="text-[#d4af37]">SAHARA</span>
-              <span className="text-white ml-2">GRILL</span>
+              <span className="text-white ml-2">LOUNGE</span>
             </motion.div>
           </Link>
 

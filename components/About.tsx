@@ -48,7 +48,7 @@ export default function About() {
                 <div
                   className="w-full h-full bg-cover bg-center"
                   style={{
-                    backgroundImage: 'url(https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070)',
+                    backgroundImage: 'url(/images/mezze-platter.jpg)',
                   }}
                 />
               </motion.div>
@@ -90,7 +90,7 @@ export default function About() {
                 style={{ fontFamily: 'var(--font-playfair)' }}
               >
                 Där Tradition Möter{' '}
-                <span className="text-[#d4af37]">Innovation</span>
+                <span className="text-[#d4af37]">Gästfrihet</span>
               </h2>
 
               <div className="space-y-4 text-gray-400 text-lg leading-relaxed mb-8">
@@ -99,9 +99,9 @@ export default function About() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 >
-                  På <span className="text-[#d4af37] font-semibold">Sahara Grill</span> tror vi att god mat
-                  börjar med bra ingredienser. Våra mästerkockar kombinerar hederliga grilltekn iker med
-                  modern kulinarisk innovation för att skapa oförglömliga matupplevelser.
+                  På <span className="text-[#d4af37] font-semibold">Sahara Restaurang & Lounge</span> bjuder vi in dig
+                  till en autentisk kulinarisk resa genom Libanon och Mellanöstern. Våra erfarna kockar
+                  kombinerar klassiska recept med modern presentation för att skapa oförglömliga matupplevelser.
                 </motion.p>
 
                 <motion.p
@@ -109,8 +109,9 @@ export default function About() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                  Varje köttbit är noggrant utvald, varje grönsak färsk, och varje rätt är
-                  förberedd med passion och precision. Vi serverar inte bara mat – vi skapar minnen.
+                  Från färska mezerätter och saftiga grillspecialiteter till smakrika shawarmas och traditionella
+                  desserter – varje rätt är förberedd med passion och de finaste ingredienserna. Vi skapar minnen
+                  kring god mat och varm gästfrihet.
                 </motion.p>
               </div>
 

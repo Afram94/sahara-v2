@@ -155,9 +155,9 @@ export default function Hero() {
           className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-wider"
           style={{ fontFamily: 'var(--font-playfair)' }}
         >
-          <span className="text-white">Upplev</span>
+          <span className="text-white">Autentiska</span>
           <br />
-          <span className="text-[#d4af37]">Grillad Perfektion</span>
+          <span className="text-[#d4af37]">Libanesiska Smaker</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -167,9 +167,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.9 }}
           className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-12 max-w-2xl font-light leading-relaxed"
         >
-          Där premium kött möter hantverksmässiga grillttekniker.
+          Upptäck Mellanösterns rika smaker i hjärtat av Norrköping.
           <br className="hidden md:block" />
-          En kulinarisk resa utöver det vanliga.
+          Från färska mezerätter till grillspecialiteter.
         </motion.p>
 
         {/* CTA Buttons */}

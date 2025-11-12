@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Instagram, Facebook, Twitter } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -9,248 +9,123 @@ export default function Footer() {
     { name: 'Hem', href: '/' },
     { name: 'Om Oss', href: '/about' },
     { name: 'Meny', href: '/menu' },
-    { name: 'Galleri', href: '/#gallery' },
     { name: 'Kontakt', href: '/contact' },
   ];
 
-  const socialLinks = [
-    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-    { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-  ];
-
   return (
-    <footer className="relative bg-zinc-950 border-t border-zinc-800/50">
-      {/* Decorative gradient top border */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
+    <footer className="relative bg-black">
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
       
-      {/* Main Footer Content */}
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        {/* Top Section with Newsletter */}
-        <div className="py-16 border-b border-zinc-800/50">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Newsletter Signup */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-                Håll Dig <span className="text-[#d4af37]">Uppdaterad</span>
-              </h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                Prenumerera på vårt nyhetsbrev för exklusiva erbjudanden, evenemangsuppdateringar och kulinariska nyheter.
-              </p>
-              <div className="flex gap-3">
-                <input
-                  type="email"
-                  placeholder="Din e-postadress"
-                  className="flex-1 bg-zinc-900 border border-zinc-800 text-white px-4 py-3 focus:outline-none focus:border-[#d4af37] transition-colors duration-300 rounded-lg"
-                />
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 bg-[#d4af37] text-black font-semibold rounded-lg hover:bg-[#b8941f] transition-colors duration-300"
-                >
-                  Prenumerera
-                </motion.button>
-              </div>
-            </motion.div>
+        <div className="py-20">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8">
+            
+            <div className="lg:col-span-5">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+                <Link href="/" className="inline-block mb-6 group">
+                  <h3 className="font-serif text-4xl font-bold transition-all duration-300">
+                    <span className="text-gold group-hover:text-gold/80">SAHARA</span>
+                    <span className="text-white ml-2 group-hover:text-zinc-300">LOUNGE</span>
+                  </h3>
+                </Link>
+                
+                <p className="text-zinc-400 text-lg leading-relaxed mb-8 max-w-md">
+                  Autentiska libanesiska smaker i hjärtat av Norrköping. En kulinarisk upplevelse där tradition möter modern elegans.
+                </p>
 
-            {/* Quick Stats */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="grid grid-cols-3 gap-6 text-center"
-            >
-              <div>
-                <div className="text-3xl font-bold text-[#d4af37] mb-1" style={{ fontFamily: 'var(--font-playfair)' }}>15+</div>
-                <div className="text-gray-400 text-sm">År</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#d4af37] mb-1" style={{ fontFamily: 'var(--font-playfair)' }}>50K+</div>
-                <div className="text-gray-400 text-sm">Nöjda Gäster</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#d4af37] mb-1" style={{ fontFamily: 'var(--font-playfair)' }}>4.9</div>
-                <div className="text-gray-400 text-sm">Betyg</div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+                <div className="flex gap-3">
+                  <motion.a href="https://instagram.com" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1, rotate: 5 }} whileTap={{ scale: 0.95 }} className="group relative w-11 h-11 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <Instagram className="w-5 h-5 text-zinc-400 group-hover:text-gold transition-colors duration-300 relative z-10" />
+                  </motion.a>
+                  
+                  <motion.a href="https://facebook.com" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1, rotate: -5 }} whileTap={{ scale: 0.95 }} className="group relative w-11 h-11 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <Facebook className="w-5 h-5 text-zinc-400 group-hover:text-gold transition-colors duration-300 relative z-10" />
+                  </motion.a>
+                </div>
+              </motion.div>
+            </div>
 
-        {/* Middle Section - Main Links */}
-        <div className="py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Column 1: Logo & Tagline */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <Link href="/">
-                <h3
-                  className="text-3xl font-bold mb-4 cursor-pointer hover:opacity-80 transition-opacity duration-300"
-                  style={{ fontFamily: 'var(--font-playfair)' }}
-                >
-                  <span className="text-[#d4af37]">SAHARA</span>
-                  <span className="text-white ml-2">GRILL</span>
-                </h3>
-              </Link>
-              <p className="text-gray-400 leading-relaxed mb-6">
-                Där premium kött möter hantverksmässiga grilltekniker. En kulinarisk resa utöver det vanliga.
-              </p>
-              <div className="h-0.5 w-16 bg-[#d4af37] mb-6" />
-              
-              {/* Social Links with Better Styling */}
-              <div className="flex gap-3">
-                {socialLinks.map((social, index) => {
-                  const Icon = social.icon;
-                  return (
-                    <motion.a
-                      key={index}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700 flex items-center justify-center text-gray-400 hover:bg-[#d4af37] hover:text-black hover:border-[#d4af37] transition-all duration-300"
-                    >
-                      <Icon className="w-4 h-4" />
-                    </motion.a>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </div>
+            <div className="lg:col-span-2">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
+                <h4 className="text-white text-sm font-semibold mb-6 tracking-wider uppercase">Navigation</h4>
+                <ul className="space-y-3">
+                  {quickLinks.map((link, index) => (
+                    <li key={index}>
+                      <Link href={link.href} className="text-zinc-400 hover:text-gold transition-colors duration-300 text-sm inline-block relative group">
+                        <span className="relative">
+                          {link.name}
+                          <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gold group-hover:w-full transition-all duration-300" />
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
 
-          {/* Column 2: Quick Links */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <h4 className="text-white text-lg font-semibold mb-6 flex items-center gap-2" style={{ fontFamily: 'var(--font-playfair)' }}>
-                <div className="w-1 h-6 bg-[#d4af37] rounded-full" />
-                Snabblänkar
-              </h4>
-              <ul className="space-y-3">
-                {quickLinks.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 hover:text-[#d4af37] transition-colors duration-300 inline-flex items-center gap-2 group"
-                    >
-                      <span className="w-0 h-px bg-[#d4af37] group-hover:w-4 transition-all duration-300" />
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-
-          {/* Column 3: Contact Info */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h4 className="text-white text-lg font-semibold mb-6 flex items-center gap-2" style={{ fontFamily: 'var(--font-playfair)' }}>
-                <div className="w-1 h-6 bg-[#d4af37] rounded-full" />
-                Kontakta Oss
-              </h4>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3 text-gray-400 hover:text-[#d4af37] transition-colors duration-300 group">
-                  <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                  <span>123 Sahara Boulevard<br />Centrum, Stockholm 10001</span>
-                </li>
-                <li className="flex items-center gap-3 text-gray-400 hover:text-[#d4af37] transition-colors duration-300 group">
-                  <Phone className="w-5 h-5 flex-shrink-0 group-hover:rotate-12 transition-transform duration-300" />
-                  <a href="tel:+46851234567">+46 (8) 123-4567</a>
-                </li>
-                <li className="flex items-center gap-3 text-gray-400 hover:text-[#d4af37] transition-colors duration-300 group">
-                  <Mail className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                  <a href="mailto:info@saharagrill.se">info@saharagrill.se</a>
-                </li>
-                <li className="flex items-start gap-3 text-gray-400">
-                  <Clock className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p>Mån-Tors: 17:00 - 23:00</p>
-                    <p>Fre-Sön: 12:00 - 00:00</p>
+            <div className="lg:col-span-5">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
+                <h4 className="text-white text-sm font-semibold mb-6 tracking-wider uppercase">Kontakt & Öppettider</h4>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3 group">
+                    <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center flex-shrink-0 group-hover:border-gold/50 transition-colors duration-300">
+                      <MapPin className="w-4 h-4 text-gold" />
+                    </div>
+                    <div className="text-zinc-400 text-sm">
+                      <p className="text-white font-medium mb-1">Besök Oss</p>
+                      <p>Fredriksdalsgatan 28</p>
+                      <p>602 23 Norrköping, Sverige</p>
+                    </div>
                   </div>
-                </li>
-              </ul>
-            </motion.div>
-          </div>
 
-          {/* Column 4: Social Media */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <h4 className="text-white text-lg font-semibold mb-6 flex items-center gap-2" style={{ fontFamily: 'var(--font-playfair)' }}>
-                <div className="w-1 h-6 bg-[#d4af37] rounded-full" />
-                Följ Oss
-              </h4>
-              <p className="text-gray-400 mb-6">
-                Håll kontakten för exklusiva uppdateringar, specialevenemang och bakom kulisserna-innehåll.
-              </p>
-              <div className="flex gap-4">
-                {socialLinks.map((social, index) => {
-                  const Icon = social.icon;
-                  return (
-                    <motion.a
-                      key={index}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-12 h-12 rounded-lg bg-zinc-800/50 border border-zinc-700 flex items-center justify-center text-gray-400 hover:bg-[#d4af37] hover:text-black hover:border-[#d4af37] transition-all duration-300"
-                    >
-                      <Icon className="w-5 h-5" />
-                    </motion.a>
-                  );
-                })}
-              </div>
-            </motion.div>
+                  <div className="flex items-start gap-3 group">
+                    <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center flex-shrink-0 group-hover:border-gold/50 transition-colors duration-300">
+                      <Phone className="w-4 h-4 text-gold" />
+                    </div>
+                    <div className="text-zinc-400 text-sm">
+                      <p className="text-white font-medium mb-1">Ring Oss</p>
+                      <a href="tel:+46707448442" className="hover:text-gold transition-colors duration-300">+46 70 744 84 42</a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3 group">
+                    <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center flex-shrink-0 group-hover:border-gold/50 transition-colors duration-300">
+                      <Mail className="w-4 h-4 text-gold" />
+                    </div>
+                    <div className="text-zinc-400 text-sm">
+                      <p className="text-white font-medium mb-1">Maila Oss</p>
+                      <a href="mailto:info@sahararestaurang.se" className="hover:text-gold transition-colors duration-300">info@sahararestaurang.se</a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3 group">
+                    <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center flex-shrink-0 group-hover:border-gold/50 transition-colors duration-300">
+                      <Clock className="w-4 h-4 text-gold" />
+                    </div>
+                    <div className="text-zinc-400 text-sm">
+                      <p className="text-white font-medium mb-1">Öppettider</p>
+                      <p>Tisdag - Torsdag: 16:00 - 23:00</p>
+                      <p>Fredag - Lördag: 16:00 - 00:00</p>
+                      <p>Söndag: 16:00 - 23:00</p>
+                      <p className="text-red-400 mt-1">Måndag: Stängt</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="py-8 border-t border-zinc-800/50"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm text-center md:text-left">
-              &copy; {new Date().getFullYear()} Sahara Grill. Alla rättigheter förbehållna.
-            </p>
-            <div className="flex gap-6 text-sm">
-              <Link href="#" className="text-gray-400 hover:text-[#d4af37] transition-colors duration-300">
-                Integritetspolicy
-              </Link>
-              <span className="text-zinc-700">•</span>
-              <Link href="#" className="text-gray-400 hover:text-[#d4af37] transition-colors duration-300">
-                Användarvillkor
-              </Link>
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="py-6 border-t border-zinc-900">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+            <p className="text-zinc-600">© {new Date().getFullYear()} Sahara Restaurang & Lounge. Alla rättigheter förbehållna.</p>
+            <div className="flex items-center gap-4">
+              <Link href="#" className="text-zinc-600 hover:text-gold transition-colors duration-300">Integritetspolicy</Link>
+              <span className="text-zinc-800">•</span>
+              <Link href="#" className="text-zinc-600 hover:text-gold transition-colors duration-300">Användarvillkor</Link>
             </div>
           </div>
         </motion.div>

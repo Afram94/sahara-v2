@@ -3,23 +3,30 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-export default function IntroLoader() {
+interface IntroLoaderProps {
+  onComplete: () => void;
+}
+
+export default function IntroLoader({ onComplete }: IntroLoaderProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Wait 300ms before starting the reveal animation
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1800);
-
     // Prevent scrolling during intro
     document.body.style.overflow = 'hidden';
+    
+    // Hide after animation
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      document.body.style.overflow = 'unset';
+      // Call onComplete after animation finishes
+      setTimeout(onComplete, 1200); // Wait for exit animation
+    }, 1800);
 
     return () => {
       clearTimeout(timer);
       document.body.style.overflow = 'unset';
     };
-  }, []);
+  }, [onComplete]);
 
   return (
     <AnimatePresence mode="wait">

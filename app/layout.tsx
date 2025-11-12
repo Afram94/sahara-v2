@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
-import IntroLoader from "@/components/IntroLoader";
 import Navigation from "@/components/Navigation";
 
 const inter = Inter({
@@ -18,8 +17,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Sahara Grill - Premium Grillrestaurang",
-  description: "Upplev den finaste grillade maten i en elegant atmosfär. Premium kött, färska ingredienser och oförglömliga smaker.",
+  title: "Sahara Restaurang & Lounge - Libanesisk & Mellanöstern Mat i Norrköping",
+  description: "Upptäck autentiska libanesiska smaker i hjärtat av Norrköping. Från färska mezerätter till grillspecialiteter, shawarmas och traditionella desserter. Dine-in, takeaway & hemleverans.",
 };
 
 export default function RootLayout({
@@ -32,7 +31,6 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} antialiased bg-black text-white`}
       >
-        <IntroLoader />
         <Navigation />
         <SmoothScrollProvider>
           {children}

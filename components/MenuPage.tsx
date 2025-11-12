@@ -32,15 +32,15 @@ export default function MenuPage() {
       <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
         {/* Page Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: '80px' }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="h-0.5 bg-[#d4af37] mx-auto mb-6"
           />
           <h1
@@ -58,7 +58,7 @@ export default function MenuPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           className="flex flex-wrap justify-center gap-3 mb-16"
         >
           {menuData.map((category) => {
@@ -67,14 +67,15 @@ export default function MenuPage() {
               <motion.button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center gap-2 px-5 py-3 rounded-full font-semibold transition-all duration-300 text-sm md:text-base ${
+                className={`flex items-center gap-2 px-5 py-3 rounded-full font-semibold transition-all duration-200 text-sm md:text-base ${
                   activeCategory === category.id
                     ? 'bg-[#d4af37] text-black shadow-lg shadow-[#d4af37]/30'
                     : 'bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white'
                 }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.2 }}
+                style={{ willChange: 'transform' }}
               >
                 <Icon size={18} />
                 <span className="hidden sm:inline">{category.name}</span>
@@ -102,7 +103,7 @@ export default function MenuPage() {
           key={activeCategory}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
           {activeMenu?.items.map((item, index) => (
@@ -110,14 +111,14 @@ export default function MenuPage() {
               key={item.slug}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="group relative bg-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-[#d4af37]/50 transition-all duration-300"
+              transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.3), ease: "easeOut" }}
+              className="group relative bg-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-[#d4af37]/50 transition-colors duration-200"
             >
               {/* Image */}
               <div className="relative h-56 md:h-64 overflow-hidden">
                 <div
-                  className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${item.image})` }}
+                  className="w-full h-full bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  style={{ backgroundImage: `url(${item.image})`, willChange: 'transform' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent" />
 
@@ -134,12 +135,18 @@ export default function MenuPage() {
                 </div>
 
                 {/* Quick View Link */}
-                <Link
-                  href={`/menu/${activeCategory}/${item.slug}`}
-                  className="absolute top-4 right-4 w-10 h-10 bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  className="absolute top-4 right-4"
                 >
-                  <ChevronRight className="text-[#d4af37]" size={20} />
-                </Link>
+                  <Link
+                    href={`/menu/${activeCategory}/${item.slug}`}
+                    className="w-10 h-10 bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110"
+                  >
+                    <ChevronRight className="text-[#d4af37]" size={20} />
+                  </Link>
+                </motion.div>
               </div>
 
               {/* Content */}
@@ -158,43 +165,37 @@ export default function MenuPage() {
                 {/* Order/View Button */}
                 <Link
                   href={`/menu/${activeCategory}/${item.slug}`}
-                  className="inline-flex items-center gap-2 text-[#d4af37] hover:text-[#b8941f] transition-colors duration-300 text-sm font-semibold"
+                  className="inline-flex items-center gap-2 text-[#d4af37] hover:text-[#b8941f] transition-colors duration-200 text-sm font-semibold group/link"
                 >
                   Visa Detaljer
-                  <ChevronRight size={16} />
+                  <ChevronRight size={16} className="transition-transform duration-200 group-hover/link:translate-x-1" />
                 </Link>
-
-                {/* Hover Effect Line */}
-                <div className="h-0.5 bg-[#d4af37] mt-4 w-0 group-hover:w-full transition-all duration-300" />
               </div>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Items Count */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="text-center mt-12 text-gray-500 text-sm"
-        >
+        <div className="text-center mt-12 text-gray-500 text-sm">
           Visar {activeMenu?.items.length} rätter i {activeMenu?.name}
-        </motion.div>
+        </div>
 
         {/* Back to Home CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-          className="text-center mt-16"
-        >
-          <Link
-            href="/"
-            className="inline-block px-8 py-4 bg-transparent border-2 border-[#d4af37] text-[#d4af37] font-semibold rounded-full hover:bg-[#d4af37] hover:text-black transition-all duration-300"
+        <div className="text-center mt-16">
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
           >
-            Tillbaka till Startsidan
-          </Link>
-        </motion.div>
+            <Link
+              href="/"
+              className="inline-block px-8 py-4 bg-transparent border-2 border-[#d4af37] text-[#d4af37] font-semibold rounded-full hover:bg-[#d4af37] hover:text-black transition-all duration-200"
+              style={{ willChange: 'transform' }}
+            >
+              Tillbaka till Startsidan
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </section>
     <Footer />
