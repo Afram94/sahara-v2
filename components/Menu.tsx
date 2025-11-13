@@ -2,98 +2,98 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Flame, Award, ChefHat } from 'lucide-react';
+import { Star, Users, Flame } from 'lucide-react';
 import Link from 'next/link';
 
 const menuCategories = [
   {
-    id: 'signature',
-    name: 'Signatur Grillar',
-    icon: Award,
+    id: 'popular',
+    name: 'Populär',
+    icon: Star,
     items: [
       {
-        name: 'Wagyu Tomahawk Stek',
-        description: 'Premium 32oz ben-in ribeye, grillad till perfektion med örtsmör',
-        price: '890 kr',
-        tags: ['Kockens Special', 'Premium'],
-        image: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=2031',
+        name: 'Ostrullar',
+        description: 'Serveras med friterad mozzarella ost i filodeg',
+        price: '69 kr',
+        tags: ['Populär', 'Förrätt'],
+        image: '/images/Ostrullar.jpg',
       },
       {
-        name: 'Blandad Grill Tallrik',
-        description: 'Lammkotletter, oxfilé, kycklingspett och grillade grönsaker',
-        price: '680 kr',
-        tags: ['Populär', 'För Delning'],
-        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=2787',
-      },
-      {
-        name: 'Ribeye Premium Skär',
-        description: '16oz dry-aged ribeye med tryffelmosa potatis',
-        price: '540 kr',
-        tags: ['Premium'],
-        image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=2070',
-      },
-    ],
-  },
-  {
-    id: 'specialties',
-    name: 'Husets Specialiteter',
-    icon: ChefHat,
-    items: [
-      {
-        name: 'Grillad Laxfilé',
-        description: 'Färsk Atlantisk lax med citronörtssås och sparris',
-        price: '420 kr',
-        tags: ['Hälsosamt Val'],
-        image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=2787',
-      },
-      {
-        name: 'BBQ Baby Back Revbensspjäll',
-        description: 'Långkokt revbensspjäll med signatur BBQ-glasyr och coleslaw',
-        price: '380 kr',
+        name: 'Arabisk Shawarma',
+        description: 'Serveras med pommes och Cream toum',
+        price: '149 kr',
         tags: ['Populär'],
-        image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069',
+        image: '/images/Arabisk_Shawarma.jpg',
       },
       {
-        name: 'Grillad Lammrack',
-        description: 'Nyzeeländskt lamm med rosmarin jus och rostade grönsaker',
-        price: '520 kr',
-        tags: ['Kockens Special'],
-        image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=2070',
+        name: 'Kycklingspett',
+        description: '2 st kycklingspett med grillade grönsaker',
+        price: '169 kr',
+        tags: ['Populär'],
+        image: '/images/Kycklingspett.jpg',
       },
     ],
   },
   {
-    id: 'smokehouse',
-    name: 'Rökhus',
+    id: 'familjebricka',
+    name: 'Familjebricka',
+    icon: Users,
+    items: [
+      {
+        name: 'Stor Bricka 12 Spett',
+        description: 'Serveras med 4 st shish kebab, 4 st kycklingspett, 4 st fläskfilespett och 8 st valfria kalla meza',
+        price: '1 049 kr',
+        tags: ['För Delning', 'Familj'],
+        image: '/images/stor_bricka_12_spett.jpg',
+      },
+      {
+        name: 'Mellan Bricka 8 Spett',
+        description: 'Serveras med 3 st shish kebab, 3 st kycklingspett, 2 st fläskfilespett och 6 st valfria kalla meza',
+        price: '849 kr',
+        tags: ['För Delning', 'Familj'],
+        image: '/images/mellan_bricka_8_spett.jpg',
+      },
+      {
+        name: 'Liten Bricka 4 Spett',
+        description: 'Serveras med 2 st shish kebab, 2 st kycklingspett och 4 st valfria kalla meza',
+        price: '450 kr',
+        tags: ['För Delning'],
+        image: '/images/liten_bricka_4_spett.jpg',
+      },
+    ],
+  },
+  {
+    id: 'grillratter',
+    name: 'Grillrätter',
     icon: Flame,
     items: [
       {
-        name: 'Rökt Brisket',
-        description: '12-timmars rökt oxbringa med BBQ bönor och majsbröd',
-        price: '360 kr',
-        tags: ['Rökt 12 timmar'],
-        image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=2787',
-      },
-      {
-        name: 'Pulled Pork Tallrik',
-        description: 'Långrökt pulled pork med tre hemgjorda såser',
-        price: '320 kr',
+        name: 'Shish Kebab',
+        description: '2 st nöttfärsspett med grillade grönsaker',
+        price: '169 kr',
         tags: ['Populär'],
-        image: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=2031',
+        image: '/images/Shish_Kebab1.jpg',
       },
       {
-        name: 'Rökta Kycklingvingar',
-        description: 'Hickory-rökta vingar med buffalo eller honung BBQ sås',
-        price: '240 kr',
-        tags: ['Aptitretare'],
-        image: 'https://images.unsplash.com/photo-1608039755401-742074f0548d?q=80&w=2835',
+        name: 'Urfa Kebab',
+        description: '2 st nöttfärsspett med grillade grönsaker. Stark',
+        price: '169 kr',
+        tags: ['Stark'],
+        image: '/images/Urfa_Kebab.jpg',
+      },
+      {
+        name: 'Fläskfilespett',
+        description: '2 st fläskfiléspett med grillade grönsaker',
+        price: '169 kr',
+        tags: [],
+        image: '/images/flaskfilespett.jpg',
       },
     ],
   },
 ];
 
 export default function Menu() {
-  const [activeCategory, setActiveCategory] = useState('signature');
+  const [activeCategory, setActiveCategory] = useState('popular');
 
   const activeMenu = menuCategories.find((cat) => cat.id === activeCategory);
 
