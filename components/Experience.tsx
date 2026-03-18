@@ -264,7 +264,7 @@ export default function Experience() {
                   Upplev Skillnaden Själv
                 </h3>
                 <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-                  Besök oss och upptäck varför tusentals gäster väljer Sahara Grill för sina mest minnesvärd måltider
+                  Besök oss och upptäck varför tusentals gäster väljer Sahara Lounge för sina mest minnesvärda måltider
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <motion.a
@@ -276,12 +276,12 @@ export default function Experience() {
                     Se Vår Fullständiga Meny
                   </motion.a>
                   <motion.a
-                    href="/contact"
+                    href="/events"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300"
                   >
-                    Boka Bord Nu
+                    Privata Event
                   </motion.a>
                 </div>
               </motion.div>

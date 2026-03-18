@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Award, Clock, Heart, Users, TrendingUp, Star } from 'lucide-react';
+import { Award, Clock, Heart, Users } from 'lucide-react';
 import { useRef } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -36,29 +36,6 @@ export default function AboutPage() {
       icon: Clock,
       title: 'Hantverk',
       description: 'Timmar av förberedelse, generationers kunskap, perfekt timing. Varje rätt är ett mästerverk skapat med passion och respekt.',
-    },
-  ];
-
-  const timeline = [
-    {
-      year: '2023',
-      title: 'Öppning',
-      description: 'Sahara Restaurang & Lounge öppnar i hjärtat av Norrköping med en vision att dela autentiska libanesiska smaker.',
-    },
-    {
-      year: '2024',
-      title: 'Lounge Expansion',
-      description: 'Introducerade vår loungeområde, en mysig plats för avkoppling med vänner och familj.',
-    },
-    {
-      year: '2024',
-      title: 'Lokalfavorit',
-      description: 'Blev snabbt en omtyckt destination för autentisk mellanöstern mat i Norrköping.',
-    },
-    {
-      year: '2025',
-      title: 'Fortsatt Tillväxt',
-      description: 'Expanderar menyn med fler traditionella rätter och moderna tolkningar av klassiker.',
     },
   ];
 
@@ -166,20 +143,20 @@ export default function AboutPage() {
                     className="w-full h-64 object-cover rounded-sm"
                   />
                   <img
-                    src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop"
-                    alt="Food preparation"
+                    src="/images/Kycklingspett.jpg"
+                    alt="Grillad kyckling"
                     className="w-full h-48 object-cover rounded-sm"
                   />
                 </div>
                 <div className="space-y-4 pt-8">
                   <img
-                    src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&auto=format&fit=crop"
-                    alt="Chef cooking"
+                    src="/images/Arabisk_Shawarma.jpg"
+                    alt="Arabisk Shawarma"
                     className="w-full h-48 object-cover rounded-sm"
                   />
                   <img
-                    src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&auto=format&fit=crop"
-                    alt="Restaurant ambiance"
+                    src="/images/mezze-platter.jpg"
+                    alt="Traditionell meze"
                     className="w-full h-64 object-cover rounded-sm"
                   />
                 </div>
@@ -259,52 +236,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="py-32">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
-          >
-            <span className="text-gold text-sm tracking-[0.3em] uppercase mb-4 block">
-              Vår Resa
-            </span>
-            <h2 className="font-serif text-4xl md:text-6xl text-white">
-              Milstolpar & Ögonblick
-            </h2>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto">
-            {timeline.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-                className="relative pl-8 pb-16 border-l border-zinc-800 last:pb-0 group"
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-0 top-0 -translate-x-1/2 w-4 h-4 rounded-full bg-gold transition-transform duration-300 group-hover:scale-125" />
-                
-                <div className="mb-2">
-                  <span className="font-serif text-3xl text-gold">{item.year}</span>
-                </div>
-                <h3 className="font-serif text-2xl text-white mb-3 group-hover:text-gold transition-colors duration-300">
-                  {item.title}
-                </h3>
-                <p className="text-zinc-400 leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section - Redesigned */}
       <section className="py-32 relative">
         <div className="container mx-auto px-4">
@@ -340,14 +271,14 @@ export default function AboutPage() {
                   className="relative z-20"
                 >
                   <div className="mb-6">
-                    <span className="inline-block px-4 py-1.5 bg-gold/20 border border-gold/30 rounded-full text-gold text-xs tracking-wider uppercase font-semibold">
+                    <span className="inline-block px-4 py-1.5 bg-[#d4af37]/20 border border-[#d4af37]/30 rounded-full text-[#d4af37] text-xs tracking-wider uppercase font-semibold">
                       Exklusiv Upplevelse
                     </span>
                   </div>
                   
                   <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
                     Upplev
-                    <span className="block text-gold mt-2">Skillnaden</span>
+                    <span className="block text-[#d4af37] mt-2">Skillnaden</span>
                   </h2>
                   
                   <p className="text-zinc-300 text-lg mb-8 leading-relaxed">
@@ -362,38 +293,29 @@ export default function AboutPage() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ duration: 0.2 }}
-                      className="inline-flex items-center justify-center px-8 py-4 rounded-lg font-semibold tracking-wide shadow-lg transition-shadow duration-200 hover:shadow-xl"
-                      style={{ backgroundColor: '#d4af37', color: '#000000', willChange: 'transform' }}
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-semibold tracking-wide shadow-lg hover:shadow-xl transition-shadow duration-200"
+                      style={{ backgroundColor: '#d4af37', color: '#000000' }}
                     >
-                      <span className="flex items-center gap-2">
-                        SE VÅR MENY
-                        <svg className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </span>
+                      SE VÅR MENY
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </motion.a>
                     
                     <motion.a
-                      href="/contact"
+                      href="/events"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ duration: 0.2 }}
-                      className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-white/20 text-white font-semibold tracking-wide backdrop-blur-sm hover:border-gold/50 transition-colors duration-200"
-                      style={{ willChange: 'transform' }}
+                      className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-white/20 text-white font-semibold tracking-wide hover:border-[#d4af37]/50 transition-colors duration-200"
                     >
-                      <span>BOKA BORD</span>
+                      PRIVATA EVENT
                     </motion.a>
                   </div>
                 </motion.div>
 
                 {/* Right Side - Feature Cards */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                  className="grid grid-cols-2 gap-4"
-                >
+                <div className="grid grid-cols-2 gap-4">
                   {[
                     { icon: '🍽️', title: 'Autentiska Rätter', desc: 'Traditionella recept' },
                     { icon: '✨', title: 'Premium Service', desc: 'Exceptionell gästfrihet' },
@@ -402,21 +324,20 @@ export default function AboutPage() {
                   ].map((item, index) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.1 * index, ease: "easeOut" }}
-                      className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-gold/30 transition-all duration-300"
-                      style={{ willChange: 'transform' }}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.5, delay: 0.15 * index, ease: "easeOut" }}
+                      className="group bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-[#d4af37]/30 transition-colors duration-300"
                     >
                       <div className="text-3xl mb-3">{item.icon}</div>
-                      <h3 className="text-white font-semibold mb-1 group-hover:text-gold transition-colors duration-300">
+                      <h3 className="text-white font-semibold mb-1 group-hover:text-[#d4af37] transition-colors duration-300">
                         {item.title}
                       </h3>
                       <p className="text-zinc-400 text-sm">{item.desc}</p>
                     </motion.div>
                   ))}
-                </motion.div>
+                </div>
 
               </div>
             </div>

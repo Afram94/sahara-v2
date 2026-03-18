@@ -73,10 +73,10 @@ export default function Navigation() {
               transition={{ delay: 0.8 }}
             >
               <Link
-                href="/contact"
+                href="/events"
                 className="px-6 py-2.5 bg-[#d4af37] text-black font-semibold rounded-full hover:bg-[#b8941f] transition-all duration-300 hover:scale-105 inline-block"
               >
-                Reservera Bord
+                Privata Event
               </Link>
             </motion.div>
           </div>
@@ -124,11 +124,11 @@ export default function Navigation() {
                 transition={{ delay: 0.5 }}
               >
                 <Link
-                  href="/contact"
+                  href="/events"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="px-6 py-3 bg-[#d4af37] text-black font-semibold rounded-full hover:bg-[#b8941f] transition-colors text-center block"
                 >
-                  Reservera Bord
+                  Privata Event
                 </Link>
               </motion.div>
             </div>

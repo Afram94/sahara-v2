@@ -121,10 +121,6 @@ export default function MenuItemPage() {
               {/* Additional Info */}
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-500">Tillredningstid</span>
-                  <span className="text-white font-semibold">{item.prepTime || '15-20 min'}</span>
-                </div>
-                <div className="flex justify-between items-center">
                   <span className="text-gray-500">Portionsstorlek</span>
                   <span className="text-white font-semibold">{item.servingSize || '1-2 personer'}</span>
                 </div>

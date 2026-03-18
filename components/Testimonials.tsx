@@ -10,53 +10,42 @@ const testimonials = [
     location: 'Stockholm, Sverige',
     rating: 5,
     quote: 'Wagyu Tomahawk var exceptionell. Varje detalj talar om kvalitet och passion.',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop',
   },
   {
     name: 'James Kennedy',
     location: 'Göteborg, Sverige',
     rating: 5,
     quote: 'Absolut fantastiskt! Live grillupplevelsen är fascinerande. Perfekt för speciella tillfällen.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop',
   },
   {
     name: 'Emma Laurent',
     location: 'Malmö, Sverige',
     rating: 5,
     quote: 'Sommelieren hjälpte oss hitta den perfekta vinparringen. En oförglömlig kulinarisk resa.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop',
   },
   {
     name: 'Michael Chen',
     location: 'Uppsala, Sverige',
     rating: 5,
     quote: 'Som kock själv är jag imponerad av precisionen. Detta är grillning upphöjd till en konstform.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop',
   },
   {
     name: 'David Martinez',
     location: 'Lund, Sverige',
     rating: 5,
     quote: 'Atmosfären är sofistikerad men ändå välkomnande. Service var oklanderlig från början till slut.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop',
   },
   {
     name: 'Sophia Williams',
     location: 'Linköping, Sverige',
     rating: 5,
     quote: 'Varje rätt var en uppenbarelse. Kockens uppmärksamhet på detaljer är extraordinär.',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop',
   },
 ];
 
-// Sample avatars for the overlapping display
-const reviewerAvatars = [
-  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop',
-];
+// Initials avatars (no images needed)
+const reviewerInitials = ['SM', 'JK', 'EL', 'MC', 'DM'];
+const avatarColors = ['#d4af37', '#b8941f', '#c9a227', '#a07810', '#d4af37'];
 
 // Testimonial Card Component
 interface TestimonialCardProps {
@@ -97,12 +86,11 @@ function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
         <div className="relative z-10">
           {/* Name and Location */}
           <div className="flex items-start gap-3 mb-4">
-            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#d4af37]/30 flex-shrink-0 group-hover:scale-110 group-hover:border-[#d4af37]/60 transition-all duration-300">
-              <img
-                src={testimonial.image}
-                alt={testimonial.name}
-                className="w-full h-full object-cover"
-              />
+            <div
+              className="w-12 h-12 rounded-full border-2 border-[#d4af37]/30 flex-shrink-0 flex items-center justify-center group-hover:scale-110 group-hover:border-[#d4af37]/60 transition-all duration-300 text-black text-xs font-bold"
+              style={{ backgroundColor: '#d4af37' }}
+            >
+              {testimonial.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
             </div>
             <div className="flex-1 min-w-0">
               <h4 className="text-white font-semibold text-base truncate group-hover:text-[#d4af37] transition-colors duration-400">
@@ -166,7 +154,7 @@ export default function Testimonials() {
             {/* Label */}
             <div className="inline-block">
               <span className="px-4 py-2 bg-[#d4af37]/10 border border-[#d4af37]/30 rounded-full text-[#d4af37] text-sm font-semibold tracking-wide">
-                Testimonials
+                Kundrecensioner
               </span>
             </div>
 
@@ -184,17 +172,13 @@ export default function Testimonials() {
               {/* Overlapping Avatars */}
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-3">
-                  {reviewerAvatars.map((avatar, index) => (
+                  {reviewerInitials.map((initials, index) => (
                     <div
                       key={index}
-                      className="w-12 h-12 rounded-full border-2 border-black overflow-hidden hover:scale-110 transition-transform duration-300"
-                      style={{ zIndex: reviewerAvatars.length - index }}
+                      className="w-12 h-12 rounded-full border-2 border-black flex items-center justify-center flex-shrink-0 hover:scale-110 transition-transform duration-300 text-black text-xs font-bold"
+                      style={{ zIndex: reviewerInitials.length - index, backgroundColor: avatarColors[index] }}
                     >
-                      <img
-                        src={avatar}
-                        alt={`Reviewer ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
+                      {initials}
                     </div>
                   ))}
                 </div>

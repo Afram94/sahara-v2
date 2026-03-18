@@ -155,9 +155,8 @@ export default function Hero() {
           className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-wider"
           style={{ fontFamily: 'var(--font-playfair)' }}
         >
-          <span className="text-white">Autentiska</span>
-          <br />
-          <span className="text-[#d4af37]">Libanesiska Smaker</span>
+          <span className="text-[#d4af37]">SAHARA</span>
+          <span className="text-white">LOUNGE</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -186,14 +185,6 @@ export default function Hero() {
             whileTap={{ scale: 0.95 }}
           >
             Se Meny
-          </motion.a>
-          <motion.a
-            href="#contact"
-            className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition-all duration-300 text-lg"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Boka Bord
           </motion.a>
         </motion.div>
 
