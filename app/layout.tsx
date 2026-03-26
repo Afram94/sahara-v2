@@ -19,6 +19,9 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Sahara Restaurang & Lounge - Libanesisk & Mellanöstern Mat i Norrköping",
   description: "Upptäck autentiska libanesiska smaker i hjärtat av Norrköping. Från färska mezerätter till grillspecialiteter, shawarmas och traditionella desserter. Dine-in, takeaway & hemleverans.",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
