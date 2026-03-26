@@ -1,16 +1,41 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { menuData } from '@/lib/menuData';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
+const STORAGE_KEY = 'sahara_active_category';
+
 export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState(menuData[0].id);
   const sectionRef = useRef(null);
+
+  // Restore category only if coming back from a menu item detail page
+  useEffect(() => {
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    if (saved && menuData.some((cat) => cat.id === saved)) {
+      setActiveCategory(saved);
+    }
+    // Clear on unmount (user navigates away from /menu to somewhere else)
+    return () => {
+      // Only clear if we're leaving /menu entirely (not going into /menu/[category]/[slug])
+      // We do this via a small timeout so navigation target is known
+      setTimeout(() => {
+        if (!window.location.pathname.startsWith('/menu')) {
+          sessionStorage.removeItem(STORAGE_KEY);
+        }
+      }, 0);
+    };
+  }, []);
+
+  const handleCategoryChange = (id: string) => {
+    setActiveCategory(id);
+    sessionStorage.setItem(STORAGE_KEY, id);
+  };
 
   const activeMenu = menuData.find((cat) => cat.id === activeCategory);
 
@@ -66,7 +91,7 @@ export default function MenuPage() {
             return (
               <motion.button
                 key={category.id}
-                onClick={() => setActiveCategory(category.id)}
+                onClick={() => handleCategoryChange(category.id)}
                 className={`flex items-center gap-2 px-5 py-3 rounded-full font-semibold transition-all duration-200 text-sm md:text-base ${
                   activeCategory === category.id
                     ? 'bg-[#d4af37] text-black shadow-lg shadow-[#d4af37]/30'
@@ -112,65 +137,59 @@ export default function MenuPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.3), ease: "easeOut" }}
-              className="group relative bg-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-[#d4af37]/50 transition-colors duration-200"
             >
-              {/* Image */}
-              <div className="relative h-56 md:h-64 overflow-hidden">
-                <div
-                  className="w-full h-full bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                  style={{ backgroundImage: `url(${item.image})`, willChange: 'transform' }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent" />
+              <Link
+                href={`/menu/${activeCategory}/${item.slug}`}
+                className="group relative bg-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-[#d4af37]/50 transition-colors duration-200 block cursor-pointer"
+              >
+                {/* Image */}
+                <div className="relative h-56 md:h-64 overflow-hidden">
+                  <div
+                    className="w-full h-full bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                    style={{ backgroundImage: `url(${item.image})`, willChange: 'transform' }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent" />
 
-                {/* Tags */}
-                <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                  {item.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-[#d4af37] text-black text-xs font-semibold rounded-full backdrop-blur-sm"
+                  {/* Tags */}
+                  <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                    {item.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 bg-[#d4af37] text-black text-xs font-semibold rounded-full backdrop-blur-sm"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Quick View Icon */}
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <div className="w-10 h-10 bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center">
+                      <ChevronRight className="text-[#d4af37]" size={20} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-5 md:p-6">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3
+                      className="text-xl font-bold text-white group-hover:text-[#d4af37] transition-colors duration-300 flex-1"
+                      style={{ fontFamily: 'var(--font-playfair)' }}
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      {item.name}
+                    </h3>
+                    <span className="text-2xl font-bold text-[#d4af37] ml-3">{item.price}</span>
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-4">{item.description}</p>
+
+                  {/* View Button */}
+                  <span className="inline-flex items-center gap-2 text-[#d4af37] group-hover:text-[#b8941f] transition-colors duration-200 text-sm font-semibold">
+                    Visa Detaljer
+                    <ChevronRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
+                  </span>
                 </div>
-
-                {/* Quick View Link */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  className="absolute top-4 right-4"
-                >
-                  <Link
-                    href={`/menu/${activeCategory}/${item.slug}`}
-                    className="w-10 h-10 bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110"
-                  >
-                    <ChevronRight className="text-[#d4af37]" size={20} />
-                  </Link>
-                </motion.div>
-              </div>
-
-              {/* Content */}
-              <div className="p-5 md:p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h3
-                    className="text-xl font-bold text-white group-hover:text-[#d4af37] transition-colors duration-300 flex-1"
-                    style={{ fontFamily: 'var(--font-playfair)' }}
-                  >
-                    {item.name}
-                  </h3>
-                  <span className="text-2xl font-bold text-[#d4af37] ml-3">{item.price}</span>
-                </div>
-                <p className="text-gray-400 text-sm leading-relaxed mb-4">{item.description}</p>
-
-                {/* Order/View Button */}
-                <Link
-                  href={`/menu/${activeCategory}/${item.slug}`}
-                  className="inline-flex items-center gap-2 text-[#d4af37] hover:text-[#b8941f] transition-colors duration-200 text-sm font-semibold group/link"
-                >
-                  Visa Detaljer
-                  <ChevronRight size={16} className="transition-transform duration-200 group-hover/link:translate-x-1" />
-                </Link>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>

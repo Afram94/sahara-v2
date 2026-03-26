@@ -43,7 +43,7 @@ export default function MenuItemPage() {
               className="inline-flex items-center gap-2 text-gray-400 hover:text-[#d4af37] transition-colors"
             >
               <ChevronLeft size={20} />
-              Back to Menu
+              Tillbaka till Menyn
             </Link>
           </motion.div>
 

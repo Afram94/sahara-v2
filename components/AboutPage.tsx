@@ -135,32 +135,27 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               className="relative"
             >
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4 h-[520px]">
+                <div className="relative rounded-2xl overflow-hidden">
                   <img
                     src="/images/cocktail_1.jpg"
-                    alt="Sahara Signature Cocktail"
-                    className="w-full h-64 object-cover rounded-sm"
+                    alt="Sahara Lounge drycker"
+                    className="w-full h-full object-cover"
                   />
-                  <img
-                    src="/images/Kycklingspett.jpg"
-                    alt="Grillad kyckling"
-                    className="w-full h-48 object-cover rounded-sm"
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
-                <div className="space-y-4 pt-8">
-                  <img
-                    src="/images/Arabisk_Shawarma.jpg"
-                    alt="Arabisk Shawarma"
-                    className="w-full h-48 object-cover rounded-sm"
-                  />
+                <div className="relative rounded-2xl overflow-hidden mt-8">
                   <img
                     src="/images/mezze-platter.jpg"
                     alt="Traditionell meze"
-                    className="w-full h-64 object-cover rounded-sm"
+                    className="w-full h-full object-cover"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
               </div>
+              {/* Decorative gold accent */}
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-[#d4af37]/30 rounded-2xl -z-10" />
+              <div className="absolute -top-4 -left-4 w-16 h-16 border-2 border-[#d4af37]/20 rounded-xl -z-10" />
             </motion.div>
           </div>
         </div>

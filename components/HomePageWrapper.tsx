@@ -19,7 +19,7 @@ export default function HomePageWrapper() {
         <Hero />
         <Menu />
         <Experience />
-        <Gallery />
+        {/* <Gallery /> */}
         <Testimonials />
         <Footer />
       </main>
